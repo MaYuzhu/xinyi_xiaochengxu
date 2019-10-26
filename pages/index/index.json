@@ -1,0 +1,8 @@
+{
+  "usingComponents": {},
+  
+  "navigationBarTitleText": "评估主题",
+  "navigationBarBackgroundColor": "#fff484",
+  "navigationBarTextStyle": "black",
+  "disableScroll": true
+}

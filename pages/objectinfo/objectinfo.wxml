@@ -1,0 +1,4 @@
+<!--pages/objectinfo/objectinfo.wxml-->
+<view>
+  <view>未提交前不允许中途退出</view>
+</view>

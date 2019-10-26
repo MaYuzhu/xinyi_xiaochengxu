@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container bg">
+  <view class='bg_img_view'>
+    <image src="../../images/bg.png" class="bg_image" mode="scaleToFill"></image>
+    
+  </view>
+  <scroll-view scroll-y="true" style="height: 100%;">
+    <view class="scroll-y" style="min-height: 101%;">
+      <view class='item_content' wx:for-items="{{scrolls}}" wx:key="name">
+        <view class="item" bindtap="gotoPage">
+          <view class='item_child1'>{{item.name}}</view>
+          <view class='item_child2'>
+            <view>进入主题</view>
+            <image src="../../images/youjiantou.png" style='width:50rpx;height:50rpx' mode="scaleToFill"></image> 
+          </view>
+        </view>
+        
+      </view>
+    </view>
+  </scroll-view>
+  
+  
+</view>
