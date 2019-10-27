@@ -1,39 +1,37 @@
 {
-  "pages":[
-      "pages/objectinfo/objectinfo",
-
-    "pages/index/index",
-    "pages/gaugelist/gaugelist",
-    
-    "pages/mime/mine",
-    "pages/logs/logs"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
-  },
-  "tabBar":{
-    "color": "#AAAAAA",
-    "selectedColor": "#c2c212",
-    "list": [
-      {
-      
-        "pagePath": "pages/index/index",
+    "pages": [
         
-        "iconPath": "images/home1.png",
         
-        "selectedIconPath": "images/home.png",
-        
-        "text": "评估"
-      },
-      {
-        "pagePath": "pages/mime/mine",
-        "iconPath": "images/my1.png",
-        "selectedIconPath": "images/my.png",
-        "text": "我的"
-      }
-    ]
-  }
+        "pages/objectinfo/objectinfo",
+        "pages/index/index",
+        "pages/gaugelist/gaugelist",
+        "pages/xieyi/xieyi",
+        "pages/mime/mine",
+        "pages/logs/logs"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#AAAAAA",
+        "selectedColor": "#c2c212",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "iconPath": "images/home1.png",
+                "selectedIconPath": "images/home.png",
+                "text": "评估"
+            },
+            {
+                "pagePath": "pages/mime/mine",
+                "iconPath": "images/my1.png",
+                "selectedIconPath": "images/my.png",
+                "text": "我的"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json"
 }
