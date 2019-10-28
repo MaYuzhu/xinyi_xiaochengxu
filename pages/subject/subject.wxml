@@ -1,0 +1,41 @@
+<!--pages/subject/subject.wxml-->
+<view class='bg'>
+  <view class='top'>
+    <view class='top_left'>
+      <image class='top_img'  bindtap="powerDrawer" data-statu="open" src="../../images/更多.png" style='width:50rpx;height:50rpx;' mode="scaleToFill"></image>
+      <text style='color:#515151'>12/31</text>
+    </view>
+    <view>14分44秒</view>
+  </view>
+  <view class='content'>
+    <view style=' border-bottom: 2rpx solid #ddd;height:70rpx;line-height:70rpx;font-size:34rpx'>单选题：头疼</view>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label style='display:block;height:70rpx;' class='line_botttom' wx:for-items="{{xuanxiang}}" wx:key='index'>
+          <text>{{item}}</text>
+          <radio class="radio" style='float:right;'>
+          </radio>
+      </label>
+      
+    </radio-group>
+    <view class='next_wrap'>
+      <view><image src="../../images/youjiantou.png" style='width:50rpx;height:50rpx;transform: rotate(180deg)' mode="scaleToFill"></image>上一题</view>
+      <view>下一题<image src="../../images/youjiantou.png" style='width:50rpx;height:50rpx;' mode="scaleToFill"></image></view>
+    </view>
+  </view>
+  <button class='button'>结束</button>
+</view>
+
+<view class='mask' bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}">  </view>
+<view class='Drawer' animation="{{animationData}}" wx:if="{{showModalStatus}}">
+  
+  <scroll-view scroll-y="true" style='height: 100%;'>
+    <view class='tihao_title'>1.儿童行为情绪</view>
+    <view class='tihao_wrap'>
+      <view class='tihao_item' wx:for-items="{{tihao_index}}" wx:key='index'>
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+  
+</view>
+

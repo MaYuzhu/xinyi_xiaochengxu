@@ -100,7 +100,7 @@ radio .wx-radio-input.wx-radio-input-checked::before{
 .button{
     height: 80rpx;
     line-height: 80rpx;
-    background:rgb(245, 230, 17);
+    background:#c2c212;
     color:#fff;
     border-radius: 50rpx;
     font-size: 30rpx;
