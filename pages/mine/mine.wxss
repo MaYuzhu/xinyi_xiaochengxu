@@ -1,1 +1,59 @@
-/* pages/mine/mine.wxss */
+page{
+  height: 100%;
+}
+.bg{
+  background: #f9f9f9;
+  height: 100%;
+}
+.top{
+  margin: 0 30rpx;
+  padding: 30rpx 0;
+  display: flex;
+  align-items: center;
+}
+.icon_3{
+  padding: 50rpx 0;
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+}
+.item{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.icon_text{
+  font-size:30rpx;
+  color: #515151; 
+}
+.num{
+  background: #c2c212;
+  display: block;
+  position: absolute;
+  height: 30rpx;
+  min-width: 30rpx;
+  border-radius: 15rpx;
+  line-height: 30rpx;
+  font-size: 20rpx;
+  color: #fff;
+  text-align: center;
+  top:0;
+  right: 15rpx;
+}
+.list{
+  margin-top: 30rpx;
+  padding: 0 30rpx;
+  background: #fff;
+}
+.list>view{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120rpx;
+  border-bottom: 2rpx solid #ddd;
+  font-size: 32rpx;
+  color: #666;
+}
+.list>view:last-child{
+  border-bottom: none;
+}

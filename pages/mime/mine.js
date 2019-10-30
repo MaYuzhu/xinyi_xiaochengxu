@@ -31,15 +31,16 @@ Page({
                   //         console.log("用户的openid:" + res.data.openid);
                   //     }
                   // });
-                  // wx.request({
-                  //   url: 'http://47.95.254.255:8080/account/wechat/login',
-                  //   data: {
-                  //     code: res.code
-                  //   },
-                  //   success: (res) => {
-                  //     console.log(res)
-                  //   }
-                  // })
+                  wx.request({
+                    url: 'http://47.95.254.255:8080/account/wechat/login',
+                    data: {
+                      code: res.code
+                    },
+                    success: (res) => {
+                      console.log(res)
+                      wx.setStorageSync('session_id', res.data.session_id)
+                    }
+                  })
                 }
               });
             }
@@ -63,10 +64,12 @@ Page({
       // 获取到用户的信息了，打印到控制台上看下
       console.log("用户的信息如下：");
       console.log(e.detail.userInfo);
+      wx.setStorageSync('user', e.detail.userInfo.nickName)
       //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
       that.setData({
         isHide: false
       });
+      this.itemClick()
     } else {
       //用户按了拒绝按钮
       wx.showModal({
@@ -82,5 +85,18 @@ Page({
         }
       });
     }
-  }
+  },
+
+  //返回上一页
+  itemClick: function (e) {
+    // let pages = getCurrentPages();
+    // let prevPage = pages[pages.length - 2];
+    // prevPage.setData({
+    //   message: e.currentTarget.dataset.msg,
+    // })
+    wx.navigateBack({
+      delta: 1,
+    })
+  },
+  
 })

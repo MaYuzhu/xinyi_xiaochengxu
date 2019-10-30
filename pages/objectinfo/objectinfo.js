@@ -21,12 +21,18 @@ Page({
   onLoad: function (options) {
 
   },
-    gotoXieyi: function(){
-        const url = "/pages/xieyi/xieyi"
-        wx.navigateTo({
-            url: url,
-        })
-    },
+  gotoXieyi: function(){
+      const url = "/pages/xieyi/xieyi"
+      wx.navigateTo({
+          url: url,
+      })
+  },
+  gotoPageSubject: function() {
+    const url = "/pages/subject/subject"
+    wx.navigateTo({
+      url: url,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -47,7 +53,7 @@ Page({
           length: length,
           windowWidth: windowWidth
       });
-      //that.scrolltxt();// 第一个字消失后立即从右边出现
+      that.scrolltxt();// 第一个字消失后立即从右边出现
   },
     scrolltxt: function () {
         var that = this;

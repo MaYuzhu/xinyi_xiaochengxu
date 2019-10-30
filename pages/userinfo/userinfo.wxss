@@ -1,0 +1,14 @@
+.item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #ccc;
+  font-size: 30rpx;
+  color: #666;
+}
+.name_show{
+  display: flex;
+  align-items: center;
+  color: #999;
+}

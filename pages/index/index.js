@@ -39,10 +39,19 @@ Page({
   },
   gotoPage: function (event) {
     const number = event.target.id;//1或者2得到点击了按钮1或者按钮2 
-    const url = "/pages/gaugelist/gaugelist"//得到页面url 
-    wx.navigateTo({
-      url: url,
-    })
+    console.log(wx.getStorageSync('user'))
+    if (wx.getStorageSync('user')) {
+      const url = "/pages/gaugelist/gaugelist"//得到页面url 
+      wx.navigateTo({
+        //url: url,
+        url: '/pages/mime/mine'
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/mime/mine'
+      })
+    }
+    
   },
   
 })

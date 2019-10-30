@@ -1,0 +1,84 @@
+
+.container{
+  padding: 30rpx;
+  align-items: flex-start;
+}
+/*评价区域  */
+.container .evaluate_contant .evaluate_item {
+  font-size: 30rpx;
+  color: gray;
+  padding: 20rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/*评价标题  */
+.container .evaluate_contant .evaluate_item .evaluate_title {
+  display: inline-block;
+  width: 240rpx;
+}
+
+/*评价盒子  */
+.container .evaluate_contant .evaluate_item .evaluate_box {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  position: absolute;
+  left: 240rpx;
+}
+
+/*星星评价的每个图片  */
+.container .evaluate_contant .evaluate_item .evaluate_box .star-image {
+  position: absolute;
+
+  width: 50rpx;
+  height: 50rpx;
+  src: "../../images/no-star.png";
+}
+
+/*星星的左边和右边区域<点击左边半个星星，点击右边整个星星>  */
+.container .evaluate_contant .evaluate_item .evaluate_box .star-image .item {
+  position: absolute;
+  top: 0rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*按钮  */
+.container .evaluate_contant .submit_button {
+  height: 60rpx;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  margin: 20rpx;  
+}
+.submit_button {
+  height: 80rpx;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  margin: 40rpx 20rpx;  
+}
+.top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  border-bottom : 2rpx solid #efefef;
+}
+.evaluate_contant{
+  display: block;
+  width: 100%;
+}
+.text-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+.detailText{
+  border:2rpx #ccc solid;
+  display: block;
+  margin: 0 auto;
+  height: 240rpx;
+  font-size: 28rpx;
+}
+

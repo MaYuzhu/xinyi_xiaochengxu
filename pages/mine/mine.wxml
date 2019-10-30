@@ -1,2 +1,70 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class='bg'>
+  <view class='top'>
+    <image src="../../images/头像-实.png" style='width:130rpx;height:130rpx;' mode="scaleToFill"></image>
+    <view style='font-size:36rpx;color:#666'>点击授权登录</view>
+  </view>
+  <view class='icon_3'>
+    <view class='item'>
+      <view>
+        <view style='width:100rpx;height:100rpx;margin:0 auto'>
+          <image src="../../images/编辑3.png" style='width:100rpx;height:100rpx;' mode="scaleToFill"></image>
+        </view>
+        
+        <text class='num'>3</text>
+      </view>
+      <view class='icon_text'>参与评估</view>
+    </view>
+    <view class='item'>
+      <view>
+        <view style='width:100rpx;height:100rpx;margin:0 auto'>
+          <image src="../../images/文件.png" style='width:100rpx;height:100rpx;' mode="scaleToFill"></image>
+        </view> 
+        
+        <text class='num'>33</text>
+      </view>
+      <view class='icon_text'>评估历史</view>
+    </view>
+    <view class='item'>
+      <view>
+        <view style='width:70rpx;height:70rpx;padding:15rpx;margin:0 auto'>
+          <image src="../../images/定时闹钟.png" style='width:80rpx;height:80rpx;' mode="scaleToFill"></image>
+        </view>
+        <text class='num'>1</text>
+      </view>
+      <view class='icon_text'>预约次数</view>
+    </view>
+  </view>
+  <view class='list'>
+    <view bindtap="gotoUserInfo">
+      <view>个人资料</view>
+      <view>
+        <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
+      </view>
+    </view>
+    <view bindtap="gotoClockIn">
+      <view>每日打卡</view>
+      <view>
+        <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
+      </view>
+    </view>
+    <view>
+      <view>评估历史</view>
+      <view>
+        <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
+      </view>
+    </view>
+    <view>
+      <view>预约记录</view>
+      <view>
+        <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
+      </view>
+    </view>
+    <view>
+      <view>联系客服</view>
+      <view>
+        <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
+      </view>
+    </view>
+  </view>
+</view>

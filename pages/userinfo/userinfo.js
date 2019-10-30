@@ -1,4 +1,4 @@
-// pages/mine/mine.js
+// pages/userinfo/userinfo.js
 Page({
 
   /**
@@ -15,18 +15,6 @@ Page({
 
   },
 
-  gotoUserInfo: function(){
-    const url = "/pages/userinfo/userinfo"//得到页面url 
-    wx.navigateTo({
-      url: url,
-    })
-  },
-  gotoClockIn: function(){
-    const url = "/pages/clockIn/clockIn"//得到页面url 
-    wx.navigateTo({
-      url: url,
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

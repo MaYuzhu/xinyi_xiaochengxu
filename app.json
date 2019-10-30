@@ -1,15 +1,19 @@
 {
     "pages": [
-      "pages/mine/mine",
+      
+      "pages/index/index",
+        "pages/mine/mine",
+        "pages/clockIn/clockIn",
+        "pages/userinfo/userinfo",
         "pages/subject/subject",
         
         "pages/objectinfo/objectinfo",
-        "pages/index/index",
+        
         "pages/gaugelist/gaugelist",
         "pages/xieyi/xieyi",
+        "pages/mime/mine",
+        "pages/logs/logs"
         
-        "pages/logs/logs",
-        "pages/mime/mine"
     ],
     "window": {
         "backgroundTextStyle": "light",

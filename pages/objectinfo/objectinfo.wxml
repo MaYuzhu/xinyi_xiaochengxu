@@ -99,7 +99,7 @@
             
             
         </view>
-       <button class='button'>确定</button>
+       <button class='button' bindtap='gotoPageSubject'>确定</button>
        <view class='xieyi'>
         <label>
             <checkbox style='transform: scale(0.6,0.6);' checked='true'></checkbox>
