@@ -2,7 +2,8 @@
 <view wx:if="{{isHide}}">
     <view wx:if="{{canIUse}}" >
         <view class='header'>
-            <image src='/images/wx_login.png'></image>
+            心艺教育
+            <!-- <image src='/images/wx_login.png'></image> -->
         </view>
  
         <view class='content'>
@@ -18,6 +19,6 @@
 </view>
  
 <view wx:else>
-    <view>我的首页内容</view>
+    <!-- <view>我的首页内容</view> -->
 </view>
 

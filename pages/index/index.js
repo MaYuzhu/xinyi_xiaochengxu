@@ -35,7 +35,14 @@ Page({
     })
   },
   onLoad: function () {
-    
+    if (wx.getStorageSync('user')) {
+      
+    } else {
+      
+      wx.redirectTo({
+        url: '/pages/mime/mine'
+      })
+    }
   },
   gotoPage: function (event) {
     const number = event.target.id;//1或者2得到点击了按钮1或者按钮2 
@@ -43,11 +50,11 @@ Page({
     if (wx.getStorageSync('user')) {
       const url = "/pages/gaugelist/gaugelist"//得到页面url 
       wx.navigateTo({
-        //url: url,
-        url: '/pages/mime/mine'
+        url: url,
+        //url: '/pages/mime/mine'
       })
     } else {
-      wx.navigateTo({
+      wx.switchTab({
         url: '/pages/mime/mine'
       })
     }
