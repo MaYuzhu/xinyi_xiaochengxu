@@ -32,9 +32,13 @@ Page({
                   //     }
                   // });
                   wx.request({
-                    url: 'http://47.95.254.255:8080/account/wechat/login',
+                    method: "POST",
+                    url: 'http://47.95.254.255:8080/account/wechat/login?code=' + res.code,
                     data: {
                       code: res.code
+                    },
+                    header: {
+                      "Content-Type": "application/json;charset=UTF-8"
                     },
                     success: (res) => {
                       console.log(res)
@@ -76,31 +80,24 @@ Page({
           if (res.authSetting['scope.userInfo']) {
             wx.getUserInfo({
               success: function (res) {
-                // 用户已经授权过,不需要显示授权页面,所以不需要改变 isHide 的值
-                // 根据自己的需求有其他操作再补充
-                // 我这里实现的是在用户授权成功后，调用微信的 wx.login 接口，从而获取code
+                
                 wx.login({
                   success: res => {
-                    // 获取到用户的 code 之后：res.code
                     console.log("用户的code:" + res.code);
-                    // 可以传给后台，再经过解析获取用户的 openid
-                    // 或者可以直接使用微信的提供的接口直接获取 openid ，方法如下：
-                    // wx.request({
-                    //     // 自行补上自己的 APPID 和 SECRET
-                    //     url: 'https://api.weixin.qq.com/sns/jscode2session?appid=自己的APPID&secret=自己的SECRET&js_code=' + res.code + '&grant_type=authorization_code',
-                    //     success: res => {
-                    //         // 获取到用户的 openid
-                    //         console.log("用户的openid:" + res.data.openid);
-                    //     }
-                    // });
+                   
                     wx.request({
-                      url: 'http://47.95.254.255:8080/account/wechat/login',
+                      method: "POST",
+                      url: 'http://47.95.254.255:8080/account/wechat/login?code=' + res.code,
                       data: {
                         code: res.code
+                      },
+                      header: {
+                        "Content-Type": "application/json;charset=UTF-8"
                       },
                       success: (res) => {
                         console.log(res)
                         wx.setStorageSync('session_id', res.data.session_id)
+                        that.itemClick()
                       }
                     })
                   }
@@ -119,8 +116,6 @@ Page({
         }
       });
       
-
-      this.itemClick()
     } else {
       //用户按了拒绝按钮
       wx.showModal({

@@ -35,7 +35,8 @@ Page({
     })
   },
   onLoad: function () {
-    if (wx.getStorageSync('user')) {
+    console.log(wx.getStorageSync('user'))
+    if (wx.getStorageSync('session_id')) {
       
     } else {
       
