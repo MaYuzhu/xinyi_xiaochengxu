@@ -1,4 +1,6 @@
 // pages/mime/mine.js
+var app = getApp()
+var url = app.globalData.url
 Page({
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
@@ -33,7 +35,7 @@ Page({
                   // });
                   wx.request({
                     method: "POST",
-                    url: 'http://47.95.254.255:8080/account/wechat/login?code=' + res.code,
+                    url: 'account/wechat/login?code=' + res.code,
                     data: {
                       code: res.code
                     },
@@ -87,7 +89,7 @@ Page({
                    
                     wx.request({
                       method: "POST",
-                      url: 'http://47.95.254.255:8080/account/wechat/login?code=' + res.code,
+                      url: url + 'account/wechat/login?code=' + res.code,
                       data: {
                         code: res.code
                       },

@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+var url = app.globalData.url
 
 Page({
   data: {
@@ -35,9 +36,22 @@ Page({
     })
   },
   onLoad: function () {
-    console.log(wx.getStorageSync('user'))
+      var that = this
     if (wx.getStorageSync('session_id')) {
-      
+        wx.request({
+            url: url + '/theme/search?session_id=' + wx.getStorageSync('session_id'),
+            method: "POST",
+            data: { },
+            header: {
+                "Content-Type": "application/json;charset=UTF-8"
+            },
+            success: (res) => {
+                console.log(res)
+                that.setData({
+                    scrolls: res.data.results
+                })
+            }
+        })
     } else {
       
       wx.redirectTo({
@@ -49,9 +63,8 @@ Page({
     const number = event.target.id;//1或者2得到点击了按钮1或者按钮2 
     console.log(wx.getStorageSync('user'))
     if (wx.getStorageSync('user')) {
-      const url = "/pages/gaugelist/gaugelist"//得到页面url 
       wx.navigateTo({
-        url: url,
+              url: "/pages/gaugelist/gaugelist",
         //url: '/pages/mime/mine'
       })
     } else {

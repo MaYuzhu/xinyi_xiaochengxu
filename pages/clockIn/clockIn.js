@@ -1,3 +1,6 @@
+
+var app = getApp()
+var url = app.globalData.url
 Page({
 
   data: {
