@@ -1,4 +1,4 @@
-// pages/mine/mine.js
+// pages/subjectbefore/subjectbefore.js
 const app = getApp()
 const url = app.globalData.url
 Page({
@@ -7,45 +7,57 @@ Page({
    * 页面的初始数据
    */
   data: {
-    uesrname:'未登录',
-    avatar:'',
-    isAvatar: false,
+    xuanxiang:[],
+    number: '',
+    title: '',
+    countDownNum: 0,
+    roleId:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showToast({ title: '加载中', icon: 'loading', duration: 10000 })
     let that = this
+    that.setData({
+      number: options.number,
+      title: options.title,
+      countDownNum: 1,
+    })
+    //请求得到问题
     wx.request({
-      url: url + 'member/get?session_id=' + wx.getStorageSync('session_id'),
+      url: url + 'person-role/list?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
-      data: {  },
+      data: {},
       header: {
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
+        //console.log(res)
         wx.hideToast()
         that.setData({
-          uesrname: wx.getStorageSync('user'),
-          avatar: wx.getStorageSync('avatar'),
-          isAvatar: true
+          xuanxiang: res.data.results
         })
       }
     })
   },
-
-  gotoUserInfo: function(){
-    const url = "/pages/userinfo/userinfo"//得到页面url 
-    wx.navigateTo({
-      url: url,
+  radioChange: function(e){
+    let that = this
+    let val_id = e.detail.value
+    that.setData({
+      roleId: val_id
     })
   },
-  gotoClockIn: function(){
-    const url = "/pages/clockIn/clockIn"//得到页面url 
+  gotoPage: function (event) {
+    let that = this
+    let number = that.data.number
+    let title = that.data.title
+    let countDownNum = that.data.countDownNum
+    let roleId = that.data.roleId
     wx.navigateTo({
-      url: url,
+      url: "/pages/subject/subject?number=" + number + "&title=" + title + "&countDownNum=" + countDownNum, 
+      
     })
   },
   /**

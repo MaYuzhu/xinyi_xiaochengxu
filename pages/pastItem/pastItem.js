@@ -1,4 +1,4 @@
-// pages/mine/mine.js
+// pages/pastItem/pastItem.js
 const app = getApp()
 const url = app.globalData.url
 Page({
@@ -7,20 +7,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-    uesrname:'未登录',
-    avatar:'',
-    isAvatar: false,
+    theme:'关于测试',
+    theme_description:'',
+    record_id:'',
+    role_title:'',
+    questions:[],
+    xuanxiang:[
+      {content:123},
+      {content: 456}
+    ],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    wx.showToast({ title: '加载中', icon: 'loading'})
     let that = this
+    that.setData({
+      theme: options.title,
+      record_id: options.record_id
+    })
+    //请求测试结果
     wx.request({
-      url: url + 'member/get?session_id=' + wx.getStorageSync('session_id'),
+      url: url + 'record/get?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
-      data: {  },
+      data: { record_id: that.data.record_id },
       header: {
         "Content-Type": "application/json;charset=UTF-8"
       },
@@ -28,26 +41,14 @@ Page({
         console.log(res)
         wx.hideToast()
         that.setData({
-          uesrname: wx.getStorageSync('user'),
-          avatar: wx.getStorageSync('avatar'),
-          isAvatar: true
+          theme_description: res.data.theme.description,
+          role_title:'159',
+          questions: res.data.questions
         })
       }
     })
   },
 
-  gotoUserInfo: function(){
-    const url = "/pages/userinfo/userinfo"//得到页面url 
-    wx.navigateTo({
-      url: url,
-    })
-  },
-  gotoClockIn: function(){
-    const url = "/pages/clockIn/clockIn"//得到页面url 
-    wx.navigateTo({
-      url: url,
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

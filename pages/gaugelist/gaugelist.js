@@ -1,4 +1,6 @@
 // pages/gaugelist/gaugelist.js
+const app = getApp()
+const url = app.globalData.url
 Page({
 
   /**
@@ -6,6 +8,7 @@ Page({
    */
   data: {
     currentTab : 0,
+    number: 0 ,
     scrolls: [
 
       {
@@ -24,24 +27,82 @@ Page({
         name: '焦虑量表',
         tag: 10,
       },
-
-
-
     ],
+    pastList: [
+      {
+        title: '量表111',
+        tag: 15,
+      },
+      {
+        title: '量表222',
+        tag: 15,
+      },
+    ],
+    havePastList:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this
+    //console.log("传递"+options.number)
+    that.setData({
+      number: options.number
+    })
+    //量表列表
+    wx.request({
+      url: url + 'scale/search?session_id=' + wx.getStorageSync('session_id'), //+ '&theme_id=' + that.number,
+      method: "POST",
+      data: { theme_id: options.number},
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        //console.log(res)
+        that.setData({
+          scrolls: res.data.results
+        })
+      }
+    })
+    //已测过
+    wx.request({
+      url: url + 'record/search?session_id=' + wx.getStorageSync('session_id'), 
+      method: "POST",
+      data:{
+        theme_id: options.number,
+        with_scale: true,
+      },
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        //console.log(res)
+        if (res.data.results.length>0){
+          that.setData({
+            pastList: res.data.results,
+            havePastList: true,
+          })
+        }
+        
+      }
+    })
   },
 
   gotoPage: function (event) {
-    const number = event.target.id;//1或者2得到点击了按钮1或者按钮2 
-    const url = "/pages/objectinfo/objectinfo"//得到页面url 
+    const number = event.currentTarget.id  //1或者2得到点击了按钮1或者按钮2 
+    let title = event.currentTarget.dataset.title
     wx.navigateTo({
-      url: url,
+      url: "/pages/subjectbefore/subjectbefore?number=" + number + "&title=" + title,
+      //url: '/pages/mime/mine'
+    })
+  },
+  gotoPagePast: function(event){
+    const record_id = event.currentTarget.id  //1或者2得到点击了按钮1或者按钮2 
+    let title = event.currentTarget.dataset.title
+    wx.navigateTo({
+      url: "/pages/pastItem/pastItem?record_id=" + record_id + "&title=" + title,
+      //url: '/pages/mime/mine'
     })
   },
   /**

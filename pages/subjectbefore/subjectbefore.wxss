@@ -1,0 +1,53 @@
+/* pages/subjectbefore/subjectbefore.wxss */
+.content{
+  /* height: 1000px; */
+  background: #fff;
+  border: 2rpx solid #eee;
+  border-radius: 20rpx;
+  margin: 30rpx;
+  padding: 50rpx 40rpx;
+}
+.button{
+    height: 80rpx;
+    line-height: 80rpx;
+    background:#c2c212;
+    color:#fff;
+    border-radius: 50rpx;
+    font-size: 30rpx;
+    margin: 50rpx 30rpx;
+    text-align: center;
+}
+.button::after{
+    border:none; 
+}
+.line_botttom{
+  border-bottom: 2rpx solid #eee;
+  line-height: 70rpx;
+  margin-left:1em;
+  font-size: 34rpx;
+  color:#666;
+}
+radio .wx-radio-input{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx;
+   height: 40rpx;
+   border: none;
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked{
+   border: none;
+   background:#fff !important;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before{
+   border-radius: 50%;
+   width: 40rpx; 
+   height: 40rpx; 
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#c2c212; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}

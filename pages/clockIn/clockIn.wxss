@@ -16,6 +16,8 @@
 .container .evaluate_contant .evaluate_item .evaluate_title {
   display: inline-block;
   width: 240rpx;
+  font-size: 34rpx;
+  line-height: 50rpx;
 }
 
 /*评价盒子  */
@@ -49,13 +51,19 @@
   height: 60rpx;
   font-size: 30rpx;
   line-height: 60rpx;
-  margin: 20rpx;  
+  margin: 20rpx; 
+  
 }
 .submit_button {
   height: 80rpx;
   font-size: 30rpx;
   line-height: 80rpx;
   margin: 40rpx 20rpx;  
+  background:#c2c212; 
+  border-radius: 40rpx;
+}
+.submit_button::after{
+    border:none; 
 }
 .top{
   display: flex;
@@ -80,5 +88,22 @@
   margin: 0 auto;
   height: 240rpx;
   font-size: 28rpx;
+  position: relative;
+}
+.no_content{
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.currentWordNumber{
+  position: absolute;
+  right: 0;
+  bottom:0;
+  color: #aaa;
 }
 

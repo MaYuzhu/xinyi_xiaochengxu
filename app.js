@@ -35,6 +35,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    url:"http://47.95.254.255:8080/"
+    //url:"http://47.95.254.255:8080/",
+    url:"https://anlanxinyi.sount.net/"
   }
 })

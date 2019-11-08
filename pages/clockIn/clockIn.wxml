@@ -1,5 +1,14 @@
+<view wx:if='{{!isHave}}'  class='no_content'>
+  <view>
+    <image style='width:100rpx;height:100rpx;margin:0 auto;display:block;' src="../../images/页面空.png" mode="scaleToFill"></image>
+  </view>
+  <view style='color:#666' >
+    您还没有设置打卡关键字，请联系咨询师...
+  </view> 
+</view>
 
-<view>
+
+<view wx:else>
   <view class='top'>
     <view style='display: flex;align-items: center'>
       <image src="../../images/编辑3.png" style='width:50rpx;height:50rpx;' class="bg_image" mode="scaleToFill"></image>
@@ -14,12 +23,12 @@
     <!--外层循环控制有几个评价条目  -->
       <block wx:for='{{evaluate_contant}}' wx:key='' wx:for-index='idx'>
         <view class='evaluate_item'>
-          <view class='evaluate_title'>{{item}}</view>
+          <view class='evaluate_title'>{{item.title}}</view>
 
           <!--星星评价  -->
           <view class='evaluate_box'>
           <!--内层循环展示每个评价条目的星星  -->
-            <block wx:for="{{stars}}" wx:key=''>
+            <block wx:for="{{stars}}" wx:key='index'>
               <image class="star-image" style="left: {{item*60}}rpx" src="{{scores[idx] > item ?(scores[idx]-item == 0.5?halfSrc:selectedSrc) : normalSrc}}">
                 <!-- <view class="item" style="left:0rpx" data-score="{{item + 0.5}}" data-idx='{{idx}}' bindtap="selectLeft"></view> -->
                 <view class="item" style="left:0rpx" data-score="{{item + 1}}" data-idx='{{idx}}' bindtap="selectRight"></view>
@@ -40,12 +49,12 @@
     </view>
     
   </view>
-  <textarea class="detailText" 
-    placeholder="输入您的备注">
-    
+  <textarea class="detailText" maxlength="{{max}}" bindinput="inputs"
+    placeholder="输入您的备注" value="{{summary}}" bindblur="charChange">
+    <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
     
   </textarea>
-  <button class='submit_button' bindtap='submit_evaluate' type='primary'>提交</button>
+  <button style='background:#c2c212;' class='submit_button' bindtap='submit_evaluate' type='primary'>提交</button>
 
 </view>
 

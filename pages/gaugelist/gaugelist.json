@@ -3,5 +3,5 @@
   "navigationBarTitleText": "量表列表",
   "navigationBarBackgroundColor": "#fff484",
   "navigationBarTextStyle": "black",
-  "disableScroll": true
+  "disableScroll": false
 }

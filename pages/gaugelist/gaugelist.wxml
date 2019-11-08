@@ -10,8 +10,8 @@
       <view class="scroll-y" style="min-height: 101%;">
         <view class='item_content' wx:for-items="{{scrolls}}" wx:key="name">
           <view class="item">
-            <view class='item_child1'>{{item.name}}</view>
-            <view class='item_child2'  bindtap="gotoPage">
+            <view class='item_child1'>{{item.title}}</view>
+            <view class='item_child2' data-title='{{item.title}}' bindtap="gotoPage" id="{{item.scale_id}}">
               <view>测量时长：{{item.tag}}分钟</view>
               <view class='item_child2_2'>
                 <view>进入量表</view>
@@ -30,11 +30,38 @@
       
     </view>
   </view>
+
+
   <view class = "{{currentTab == 1 ? 'show':'hidden'}}" >
-    <scroll-view>
+    <view wx:if='{{havePastList}}'>
+      <scroll-view scroll-y="true" style="height: 100%;">
+        <view class="scroll-y" style="min-height: 101%;">
+          <view class='item_content' wx:for-items="{{pastList}}" wx:key="name">
+            <view class="item">
+              <view class='item_child1'>{{item.scale.title}}</view>
+              <view class='item_child2' data-title='{{item.scale.title}}' bindtap="gotoPagePast" id="{{item.record_id}}">
+                <view> </view>
+                <view class='item_child2_2'>
+                  <view>进入量表</view>
+                  <image src="../../images/youhui.png" style='width:30rpx;height:30rpx' mode="scaleToFill"></image> 
+                </view>
+                
+              </view>
+            </view>
+            
+          </view>
+        </view>
+      </scroll-view>
+      <view>
+        <view style='width:80%;height: 1rpx;background-color:#ccc;margin:0 auto;'></view>
+        <view style='width:130rpx;text-align:center;font-size:20rpx;color:#666;background:#f7f7f9;margin:0 auto; transform: translateY(-56%)'> 到达底线了~</view>
+        
+      </view>
+    </view>
       
-    </scroll-view>
-    <view class='no_content'>
+    <view wx:else class='no_content'>
+      <!-- <radio disabled='{{false}}' >aaaaaaaaaa</radio>
+      <radio disabled='{{true}}' checked='true'>aaaaaaaaaa</radio> -->
       <image src='../../images/页面空.png' style='width:100rpx;height:100rpx;margin:0 auto;display:block;' mode="scaleToFill"></image>
       <view style='text-align: center;'>空空如也</view>
       <view style='text-align: center;font-size:26rpx;color:#a0a0a0'>暂时没有相关数据</view>

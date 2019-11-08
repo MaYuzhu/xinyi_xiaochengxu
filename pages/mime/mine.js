@@ -112,7 +112,6 @@ Page({
             // 改变 isHide 的值，显示授权页面
             that.setData({
               isHide: true
-
             });
           }
         }
