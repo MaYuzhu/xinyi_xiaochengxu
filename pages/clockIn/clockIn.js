@@ -17,6 +17,7 @@ Page({
     scale_id:'',
     max: 140,
     summary: '',
+    details_submit:[],
   },
   onLoad: function (options) {
     var that = this
@@ -63,8 +64,9 @@ Page({
       details.push({ option_id: that.data.option_id_arr[i] , my_level: that.data.scores[i]})
     }
     console.log(details)
+      console.log(that.data.details_submit)
 
-    wx.request({
+    /* wx.request({
       url: url + 'track/save?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
       data: { 
@@ -79,7 +81,7 @@ Page({
         console.log(res)
         
       }
-    })
+    }) */
 
   },
   charChange: function(e){
@@ -108,12 +110,18 @@ Page({
   //点击右边,整颗星
   selectRight: function (e) {
     var score = e.currentTarget.dataset.score
-
-    this.data.scores[e.currentTarget.dataset.idx] = score,
-      this.setData({
+    
+    var option_id = e.currentTarget.dataset.optionid
+    this.data.scores[e.currentTarget.dataset.idx] = score
+    this.data.details_submit[e.currentTarget.dataset.idx] = {
+        option_id: option_id,
+        my_level: score
+    },
+    this.setData({
         scores: this.data.scores,
         score: score
-      })
+    })
+    //console.log(option_id)
   },
 
   inputs: function (e) {
