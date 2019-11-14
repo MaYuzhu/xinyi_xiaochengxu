@@ -2,14 +2,15 @@
     "pages": [
       
         "pages/index/index",
-        "pages/mine/mine",
+        
         "pages/clockIn/clockIn",
+        "pages/clockInHistory/clockInHistory",
         "pages/userinfo/userinfo",
         "pages/subjectbefore/subjectbefore",
         "pages/subject/subject",
         "pages/pastItem/pastItem",
         "pages/objectinfo/objectinfo",
-        
+        "pages/mine/mine",
         "pages/gaugelist/gaugelist",
         "pages/xieyi/xieyi",
         "pages/mime/mine",

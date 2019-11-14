@@ -25,29 +25,51 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
+        //console.log(res)
         wx.hideToast()
         that.setData({
           uesrname: wx.getStorageSync('user'),
           avatar: wx.getStorageSync('avatar'),
           isAvatar: true
         })
+        //that.setUser()
       }
     })
   },
 
   gotoUserInfo: function(){
-    const url = "/pages/userinfo/userinfo"//得到页面url 
     wx.navigateTo({
-      url: url,
+      url: "/pages/userinfo/userinfo",
     })
   },
   gotoClockIn: function(){
-    const url = "/pages/clockIn/clockIn"//得到页面url 
     wx.navigateTo({
-      url: url,
+      url: "/pages/clockIn/clockIn",
     })
   },
+  //设置用户头像与昵称
+  setUser: function(){
+    let that = this
+    wx.request({
+      url: url + 'member/save?session_id=' + wx.getStorageSync('session_id'),
+      method: "POST",
+      data: {
+        full_name: "真实姓名", 
+        phone: "13345678969", 
+        nickname: that.data.uesrname, 
+        //portrait: wx.getStorageSync('avatar'), 
+        email: "aaaa@qq.com"
+      },
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        console.log(res)
+        
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

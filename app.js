@@ -35,7 +35,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    //url:"http://47.95.254.255:8080/",
-    url:"https://anlanxinyi.sount.net/"
+    url:"http://wechat.sount.net/"
+    //url:"https://miniprogram.anlanxinyi.com/"
   }
 })

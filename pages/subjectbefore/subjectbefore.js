@@ -10,8 +10,9 @@ Page({
     xuanxiang:[],
     number: '',
     title: '',
-    countDownNum: 0,
-    roleId:'',
+    countDownNum: 0, //问题时长
+    roleId:3,  
+    record_id:'',     
   },
 
   /**
@@ -34,7 +35,7 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        //console.log(res)
+        console.log(res)
         wx.hideToast()
         that.setData({
           xuanxiang: res.data.results
@@ -48,6 +49,8 @@ Page({
     that.setData({
       roleId: val_id
     })
+    
+
   },
   gotoPage: function (event) {
     let that = this
@@ -56,7 +59,7 @@ Page({
     let countDownNum = that.data.countDownNum
     let roleId = that.data.roleId
     wx.navigateTo({
-      url: "/pages/subject/subject?number=" + number + "&title=" + title + "&countDownNum=" + countDownNum, 
+      url: "/pages/subject/subject?number=" + number + "&title=" + title + "&countDownNum=" + countDownNum + "&roleId=" + roleId,
       
     })
   },

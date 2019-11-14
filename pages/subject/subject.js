@@ -33,6 +33,7 @@ Page({
     time_m:'',
     time_s:'',
     time_show: false,
+    scale_id: '',
     record_id:null,
     role_id: '',
   },
@@ -97,11 +98,29 @@ Page({
       number: options.number,
       title: options.title,
       countDownNum: options.countDownNum,
-      role_id: options.roleId
+      role_id: options.roleId,
+      scale_id: options.number,
     })
     that.getQuestion()
     that.getTihao()
-
+    //获取record_id
+    wx.request({
+      url: url + 'record/save?session_id=' + wx.getStorageSync('session_id'),
+      method: "POST",
+      data: {
+        scale_id: options.number,
+        role_id: options.roleId,
+      },
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        //console.log(res)
+        that.setData({
+          record_id: res.data.record_id
+        })
+      }
+    })
 
   },
   //翻页
@@ -150,6 +169,9 @@ Page({
       },
       success: (res) => {
         //console.log(res)
+        if (res.data.results.length<1){
+          return false
+        }
         that.setData({
           question: res.data.results[0].content,
           question_id: res.data.results[0].question_id,
@@ -238,8 +260,7 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        
-        that.setData({ record_id: res.data.record_id})
+        //that.setData({ record_id: res.data.record_id})
       }
     })
 
@@ -280,40 +301,64 @@ Page({
             time_s: '',
             time_show: true,
           })
-          /* wx.showModal({
+          wx.showModal({
 
-            title: '删除图片',
-            content: '确定要删除该图片？',
-            showCancel: true,//是否显示取消按钮
-            cancelText: "",//默认是“取消”
-            cancelColor: 'skyblue',//取消文字的颜色
-            confirmText: "是",//默认是“确定”
-            confirmColor: 'skyblue',//确定文字的颜色
+            title: '',
+            content: '时间到，请点击确定提交结果',
+            showCancel: false,         //是否显示取消按钮
+            cancelText: "",             //默认是“取消”
+            cancelColor: 'skyblue',   //取消文字的颜色
+            confirmText: "确定",         //默认是“确定”
+            confirmColor: 'skyblue',  //确定文字的颜色
             success: function (res) {
 
               if (res.confirm) {//这里是点击了确定以后
 
-                console.log('用户点击确定')
+                wx.request({
+                  url: url + 'record/save?session_id=' + wx.getStorageSync('session_id'),
+                  method: "POST",
+                  data: {
+                    scale_id: that.data.scale_id,
+                    role_id: that.data.role_id,
+                    record_id: that.data.record_id,
+                    complete: true
+                  },
+                  header: {
+                    "Content-Type": "application/json;charset=UTF-8"
+                  },
+                  success: (res) => {
+                    console.log(res)
+                    wx.showToast({
+                      title: '提交成功',
+                      icon: 'success',
+                      duration: 800,
+                      mask: true
+                    })
+                    setTimeout(() => wx.navigateBack(), 800)
+                  }
+                })
 
-              } else {//这里是点击了取消以后
+              } else {
 
-                console.log('用户点击取消')
+                
 
               }
 
             }
 
-          }) */
+          })
         }
       }, 1000)
     })
   },
   //结束
   commit_over: function(){
+    let that = this
+    let num_not = this.data.tihao_index.length - this.data.arr_past.length
     wx.showModal({
 
       title: '',
-      content: '确定提交？',
+      content: '还有' + num_not +'个问题没有回答，确定提交？',
       showCancel: true,//是否显示取消按钮
       cancelText: "取消",//默认是“取消”
       cancelColor: '#aaa',//取消文字的颜色
@@ -323,7 +368,31 @@ Page({
 
         if (res.confirm) {//这里是点击了确定以后
 
-          console.log('用户点击确定')
+          wx.request({
+            url: url + 'record/save?session_id=' + wx.getStorageSync('session_id'),
+            method: "POST",
+            data: {
+              scale_id: that.data.scale_id,
+              role_id: that.data.role_id,
+              record_id: that.data.record_id,
+              complete: true
+            },
+            header: {
+              "Content-Type": "application/json;charset=UTF-8"
+            },
+            success: (res) => {
+              console.log(res)
+              wx.showToast({
+                title: '提交成功',
+                icon: 'success',
+                duration: 800,
+                mask: true
+              })
+              setTimeout(() => wx.navigateBack(), 800)
+            }
+          })
+
+          
 
         } else {//这里是点击了取消以后
 

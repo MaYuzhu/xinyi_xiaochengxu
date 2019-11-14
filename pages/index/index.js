@@ -82,8 +82,8 @@ Page({
       //用户按了允许授权按钮
       
       // 获取到用户的信息了，打印到控制台上看下
-      console.log("用户的信息如下：");
-      console.log(e.detail.userInfo);
+      //console.log("用户的信息如下：");
+      //console.log(e.detail.userInfo);
       wx.setStorageSync('user', e.detail.userInfo.nickName)
       wx.setStorageSync('avatar', e.detail.userInfo.avatarUrl)
       //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
@@ -105,8 +105,8 @@ Page({
 
                     wx.request({
                       method: "POST",
-                      //url: url + 'account/wechat/login?code=' + res.code,
-                      url: url + 'account/wechat/login?code=1',
+                      url: url + 'account/wechat/login?code=' + res.code,
+                      //url: url + 'account/wechat/login?code=1',
                       /* data: {
                         code: res.code
                       }, */

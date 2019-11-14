@@ -10,14 +10,15 @@ Page({
     selectedSrc: '../../images/full-star.png',
     halfSrc: '../../images/half-star.png',
     score: 0,
-    scores: [],
+    scores: [0],
     option_id_arr:[],
     //details:[],
     isHave:'',
     scale_id:'',
-    max: 140,
+    max: 128,
     summary: '',
     details_submit:[],
+    is_show_button:false,
   },
   onLoad: function (options) {
     var that = this
@@ -30,27 +31,83 @@ Page({
       },
       success: (res) => {
         console.log(res)
+        if (!res.data.details){
+          //return false
+        }
         let have = res.data.details.length
         let num_star = res.data.details[0].max_level
         let arr_atar = []
         let arr_op_id = []
-        for (let i = 0; i < num_star;i++){
+        for (let i = 0; i < num_star; i++) {
           arr_atar.push(i)
         }
         for (let j = 0; j < res.data.details.length; j++) {
           arr_op_id.push(res.data.details[j].option_id)
         }
-        console.log(arr_op_id)
 
-        if (have>0){
+        if (have > 0) {
           that.setData({
-            isHave:true,
-            evaluate_contant: res.data.details.reverse(),
+            isHave: true,
+            evaluate_contant: res.data.details,
             stars: arr_atar,
             scale_id: res.data.scale_id,
             option_id_arr: arr_op_id,
           })
-        }  
+        }
+        //判断当日是否打过
+        if (res.data.summary){
+          wx.showModal({
+
+            title: '',
+            content: '您当日已经打卡成功...',
+            showCancel: true,
+            cancelText: "返回上页",
+            cancelColor: '#c2c212',
+            confirmText: "更新打卡",
+            confirmColor: '#c2c212',
+            success: function (res) {
+              if (res.confirm) {
+                that.updataClockIn()
+              } else {
+                wx.navigateBack()
+              }
+
+            }
+
+          })
+        }
+      }
+    })
+  },
+  
+  //回显更新打卡
+  updataClockIn: function(){
+    var that = this
+    wx.request({
+      url: url + 'track/get?session_id=' + wx.getStorageSync('session_id'),
+      method: "POST",
+      data: {},
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        console.log(res)
+        let show_star = []
+        let show_details_submit = []
+        for (let i = 0; i < res.data.details.length;i++){
+          show_star[i]=res.data.details[i].my_level
+          show_details_submit.push({ 
+            option_id: res.data.details[i].option_id, 
+            my_level: res.data.details[i].my_level
+          })
+        }
+        
+        that.setData({
+          summary: res.data.summary,
+          scores: show_star,
+          details_submit: show_details_submit
+          
+        })
       }
     })
   },
@@ -58,39 +115,35 @@ Page({
   // 提交事件
   submit_evaluate: function () {
     let that = this
-    let details = []
-    let option_id_arr = that.data.option_id_arr.reverse()
-    for (let i = 0; i < that.data.scores.length;i++){
-      details.push({ option_id: that.data.option_id_arr[i] , my_level: that.data.scores[i]})
-    }
-    console.log(details)
-      console.log(that.data.details_submit)
+    
+    console.log(that.data.details_submit)
+    //console.log(that.data.summary)
 
-    /* wx.request({
+    wx.request({
       url: url + 'track/save?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
       data: { 
         scale_id: that.data.scale_id,
         summary: that.data.summary,
-        details: details,
+        details: that.data.details_submit,
       },
       header: {
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
-        
+        //console.log(res)
+        wx.showToast({
+          title: '打卡成功',
+          icon: 'success',
+          duration: 800,
+          mask: true
+        })
+        setTimeout(() => wx.navigateBack(),800)
       }
-    }) */
+    })
 
   },
-  charChange: function(e){
-    
-    let that = this
-    that.setData({
-      summary: e.detail.value
-    })
-  },
+  
 
   //点击左边,半颗星
   /* selectLeft: function (e) {
@@ -122,6 +175,19 @@ Page({
         score: score
     })
     //console.log(option_id)
+    let is_scores
+    if (this.data.scores.indexOf(0) == -1 && this.data.scores.length == this.data.evaluate_contant.length) {
+      is_scores = true
+    }
+    if (this.data.summary != '' && is_scores) {
+      this.setData({
+        is_show_button: true
+      })
+    } else {
+      this.setData({
+        is_show_button: false
+      })
+    }
   },
 
   inputs: function (e) {
@@ -137,23 +203,30 @@ Page({
     this.setData({
       currentWordNumber: len //当前字数  
     });
+    this.setData({
+      summary: e.detail.value
+    })
+    
+    let is_scores 
+    if (this.data.scores.indexOf(0) == -1 && this.data.scores.length == this.data.evaluate_contant.length){
+      is_scores = true
+    }
+    if (this.data.summary != '' && is_scores){
+      this.setData({
+        is_show_button: true
+      })
+    }else{
+      this.setData({
+        is_show_button: false
+      })
+    }
   },
 
   
 
-  test: function(){
-    
-    
-    wx.request({
-      url: url + 'person-role/list?session_id=' + wx.getStorageSync('session_id'),
-      method: "POST",
-      data: {},
-      header: {
-        "Content-Type": "application/json;charset=UTF-8"
-      },
-      success: (res) => {
-        console.log(res)  
-      }
+  history_search: function(){
+    wx.navigateTo({
+      url: "/pages/clockInHistory/clockInHistory",
     })
   }
 

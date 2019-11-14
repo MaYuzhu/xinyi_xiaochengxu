@@ -14,7 +14,7 @@
       <image src="../../images/编辑3.png" style='width:50rpx;height:50rpx;' class="bg_image" mode="scaleToFill"></image>
       <text style='font-size:30rpx;color:#666;'>表现评价</text>
     </view>
-    <view bindtap='test'>
+    <view bindtap='history_search'>
       <image src="../../images/更多.png" style='width:50rpx;height:50rpx;' class="bg_image" mode="scaleToFill"></image>
     </view>
   </view>
@@ -54,7 +54,8 @@
     <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
     
   </textarea>
-  <button style='background:#c2c212;' class='submit_button' bindtap='submit_evaluate' type='primary'>提交</button>
-
+  
+  <button hidden='{{!is_show_button}}' style='background:#c2c212;' class='submit_button' bindtap='submit_evaluate' type='primary'>提 交</button>
+  <button hidden='{{is_show_button}}'style='background:#aaa;' class='submit_button' type='primary' hover-class="none">提 交</button>
 </view>
 

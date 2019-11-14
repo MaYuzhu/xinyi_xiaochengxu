@@ -1,18 +1,15 @@
-// pages/userinfo/userinfo.js
-const app = getApp()
-const url = app.globalData.url
+var app = getApp()
+var url = app.globalData.url
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    uesrname: '小程序用户',
-    fullname: '',
-    avatar: '',
-    isAvatar: false,
-    phone: '',
-    email: '',
+    history_list:[
+      { summary: '111111', update_time:'2019-01-55 22:55:42'},
+      { summary: '555555', update_time: '2019-10-55 22:55:42'}
+    ]
   },
 
   /**
@@ -20,23 +17,18 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+
     wx.request({
-      url: url + 'member/get?session_id=' + wx.getStorageSync('session_id'),
+      url: url + 'track/search?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
-      data: {},
+      data: { paging: false },
       header: {
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
         console.log(res)
-        wx.hideToast()
         that.setData({
-          uesrname: wx.getStorageSync('user'),
-          avatar: wx.getStorageSync('avatar'),
-          fullname: res.data.full_name,
-          phone: res.data.phone,
-          email: res.data.email,
-          isAvatar: true
+          history_list: res.data.results
         })
       }
     })

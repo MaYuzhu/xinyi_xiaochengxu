@@ -11,11 +11,10 @@ Page({
     theme_description:'',
     record_id:'',
     role_title:'',
+    total_score:'', //得分
+    answer_time: '', //答题时间
     questions:[],
-    xuanxiang:[
-      {content:123},
-      {content: 456}
-    ],
+    xuanxiang:[],
   },
 
   /**
@@ -42,8 +41,10 @@ Page({
         wx.hideToast()
         that.setData({
           theme_description: res.data.theme.description,
-          role_title:'159',
-          questions: res.data.questions
+          role_title: res.data.role.title,
+          questions: res.data.questions,
+          total_score: res.data.total_score,
+          answer_time: res.data.scale.answer_time
         })
       }
     })

@@ -1,0 +1,11 @@
+<view>
+  <view></view>
+  <view class='item' wx:for-items="{{history_list}}" wx:key="name">
+    <view class="summary">
+      {{item.summary}}
+    </view>
+    <view class="update_time">
+      {{item.update_time}}
+    </view>
+  </view>
+</view>

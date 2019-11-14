@@ -59,7 +59,7 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        //console.log(res)
+        console.log(res)
         that.setData({
           scrolls: res.data.results
         })

@@ -3,29 +3,30 @@
   <view class='item'>
     <view>头像</view>
     <view>
-      <image src="../../images/头像-实.png" style='width:130rpx;height:130rpx;' mode="scaleToFill"></image>
+      <image  hidden='{{isAvatar}}' src="../../images/头像-实.png" style='width:130rpx;height:130rpx;' mode="scaleToFill"></image>
+      <image hidden='{{!isAvatar}}' src="{{avatar}}"  style='width:130rpx;height:130rpx;border-radius:65rpx;' mode="scaleToFill"></image>
     </view>
   </view>
   <view class='item'>
     <view>昵称</view>
-    <view style='color:#999'>小程序用户</view>
+    <view style='color:#999'>{{uesrname}}</view>
   </view>
   <view class='item'>
     <view>姓名</view>
     <view class='name_show'>
-      <view>一二三</view>
+      <view>{{fullname}}</view>
       <image src="../../images/youhui.png" style='width:50rpx;height:50rpx;' mode="scaleToFill"></image>
     </view>
   </view>
   <view class='item'>
     <view>邮箱</view>
     <view class='name_show'>
-      <view>123@aa.com</view>
+      <view>{{email}}</view>
       <image src="../../images/youhui.png" style='width:50rpx;height:50rpx;' mode="scaleToFill"></image>
     </view>
   </view>
   <view class='item'>
     <view>手机号</view>
-    <view style='color:#999'>12345634563</view>
+    <view style='color:#999'>{{phone}}</view>
   </view>
 </view>
