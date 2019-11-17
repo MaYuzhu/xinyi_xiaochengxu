@@ -51,3 +51,33 @@ radio .wx-radio-input.wx-radio-input-checked::before{
    transform:translate(-50%, -50%) scale(1);
    -webkit-transform:translate(-50%, -50%) scale(1);
 }
+
+/* 头提示 */
+.container {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+   
+}
+.scrolltxt{
+    padding:0 20rpx;
+    background:#fbfcdc;
+}
+.marquee_box {
+    position:relative;
+    color:#e16531;
+    height:60rpx;
+    display:block;
+    overflow:hidden;
+   
+} 
+.marquee_text {
+    white-space: nowrap;
+    position:absolute;
+    top:0;
+    font-size:28rpx;
+    height:60rpx;
+    line-height:60rpx;
+}

@@ -1,8 +1,11 @@
 {
     "pages": [
       
+      "pages/indexBefore/indexBefore",
+        "pages/clockInBefore/clockInBefore",
+        "pages/clockInItemDay/clockInItemDay",
         "pages/index/index",
-        
+        "pages/getUser/getUser",
         "pages/clockIn/clockIn",
         "pages/clockInHistory/clockInHistory",
         "pages/userinfo/userinfo",
@@ -27,6 +30,12 @@
         "color": "#AAAAAA",
         "selectedColor": "#c2c212",
         "list": [
+            {
+              "pagePath": "pages/clockInBefore/clockInBefore",
+              "iconPath": "images/打卡记录.png",
+              "selectedIconPath": "images/打卡记录1.png",
+              "text": "打卡"
+            },
             {
                 "pagePath": "pages/index/index",
                 "iconPath": "images/home1.png",

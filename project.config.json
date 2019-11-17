@@ -6,6 +6,7 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+    "checkSiteMap": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,

@@ -10,6 +10,7 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        //console.log(res)
       }
     })
     // 获取用户信息
@@ -37,5 +38,11 @@ App({
     userInfo: null,
     url:"http://wechat.sount.net/"
     //url:"https://miniprogram.anlanxinyi.com/"
-  }
+  },
+  noUser: function (e) {
+    let that = this
+    wx.navigateTo({
+      url: "/pages/getUser/getUser",
+    })
+  },
 })

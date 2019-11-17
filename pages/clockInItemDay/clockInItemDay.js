@@ -1,15 +1,37 @@
-var app = getApp()
-var url = app.globalData.url
+// pages/clockInItemDay/clockInItemDay.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    history_list:[
-      { summary: '111111', update_time:'2019-01-55 22:55:42'},
-      { summary: '555555', update_time: '2019-10-55 22:55:42'}
-    ]
+    arr_items:[
+      {
+        option_id:1,
+        my_level:3
+      },
+      {
+        option_id: 2,
+        my_level: 4
+      },
+      {
+        option_id: 3,
+        my_level: 7
+      },
+      {
+        option_id: 4,
+        my_level: 3
+      },
+      {
+        option_id: 5,
+        my_level: 4
+      },
+      {
+        option_id: 6,
+        my_level: 7
+      },
+    ],
+    text:'affhakjfhakljfhalkjfhakjfhakuyfakhaffhakjfhakljfhalkjfhakjfhakuyfakhaffhakjfhakljfhalkjfhakjfhakuyfakhaffhakjfhakljfhalkjfhakjfhakuyfakh'
   },
 
   /**
@@ -17,29 +39,9 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-
-    wx.request({
-      url: url + 'track/search?session_id=' + wx.getStorageSync('session_id'),
-      method: "POST",
-      data: { paging: false },
-      header: {
-        "Content-Type": "application/json;charset=UTF-8"
-      },
-      success: (res) => {
-        console.log(res)
-        that.setData({
-          history_list: res.data.results
-        })
-      }
-    })
-  },
-
-  gotoItem: function(e){
-    let id = e.currentTarget.dataset.id
-    let summary = e.currentTarget.dataset.summary
-    console.log(id)
-    wx.navigateTo({
-      url: "/pages/clockInItemDay/clockInItemDay?summary=" + summary,
+    
+    that.setData({
+      text: options.summary
     })
   },
 

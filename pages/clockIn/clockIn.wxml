@@ -8,7 +8,7 @@
 </view>
 
 
-<view wx:else>
+<view wx:else style='padding-bottom: 50rpx;'>
   <view class='top'>
     <view style='display: flex;align-items: center'>
       <image src="../../images/编辑3.png" style='width:50rpx;height:50rpx;' class="bg_image" mode="scaleToFill"></image>

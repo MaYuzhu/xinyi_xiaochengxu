@@ -22,7 +22,8 @@ Page({
   },
   onLoad: function (options) {
     var that = this
-    wx.request({
+    
+    /* wx.request({
       url: url + 'track/get?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
       data: {},
@@ -31,8 +32,10 @@ Page({
       },
       success: (res) => {
         console.log(res)
-        if (!res.data.details){
-          //return false
+        if (res.statusCode == 401) {
+          console.log('没有登录')
+          app.noUser()
+          return
         }
         let have = res.data.details.length
         let num_star = res.data.details[0].max_level
@@ -55,7 +58,70 @@ Page({
           })
         }
         //判断当日是否打过
-        if (res.data.summary){
+        if (res.data.summary) {
+          wx.showModal({
+
+            title: '',
+            content: '您当日已经打卡成功...',
+            showCancel: true,
+            cancelText: "返回上页",
+            cancelColor: '#c2c212',
+            confirmText: "更新打卡",
+            confirmColor: '#c2c212',
+            success: function (res) {
+              if (res.confirm) {
+                that.updataClockIn()
+              } else {
+                wx.navigateBack()
+              }
+
+            }
+
+          })
+        }
+      }
+    }) */
+    
+    
+  },
+  onShow: function(){
+    let that = this
+    wx.request({
+      url: url + 'track/get?session_id=' + wx.getStorageSync('session_id'),
+      method: "POST",
+      data: {},
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        console.log(res)
+        if (res.statusCode == 401) {
+          console.log('没有登录')
+          app.noUser()
+          return
+        }
+        let have = res.data.details.length
+        let num_star = res.data.details[0].max_level
+        let arr_atar = []
+        let arr_op_id = []
+        for (let i = 0; i < num_star; i++) {
+          arr_atar.push(i)
+        }
+        for (let j = 0; j < res.data.details.length; j++) {
+          arr_op_id.push(res.data.details[j].option_id)
+        }
+
+        if (have > 0) {
+          that.setData({
+            isHave: true,
+            evaluate_contant: res.data.details,
+            stars: arr_atar,
+            scale_id: res.data.scale_id,
+            option_id_arr: arr_op_id,
+          })
+        }
+        //判断当日是否打过
+        if (res.data.summary) {
           wx.showModal({
 
             title: '',

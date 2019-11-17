@@ -1,28 +1,36 @@
-// pages/mine/mine.js
-const app = getApp()
-const url = app.globalData.url
+// pages/clockInBefore/clockInBefore.js
+var app = getApp()
+var url = app.globalData.url
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    uesrname:'点击授权登录',
-    avatar:'',
-    isAvatar: false,
+    scrolls: [
+
+      {
+        title: '立即打卡',
+        id: 1
+      },
+      {
+        title: '查看记录',
+        id: 2
+      },
+    ],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-  },
 
-  getUserContent: function(){
+  },
+  gotoPage: function (event) {
     let that = this
+    let id = event.currentTarget.id
     wx.request({
-      url: url + 'member/get?session_id=' + wx.getStorageSync('session_id'),
+      url: url + 'track/get?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
       data: {},
       header: {
@@ -30,44 +38,28 @@ Page({
       },
       success: (res) => {
         console.log(res)
-        wx.hideToast()
-        that.setData({
-          uesrname: wx.getStorageSync('user'),
-          avatar: wx.getStorageSync('avatar'),
-          isAvatar: true
-        })
-        //that.setUser()
+        if (res.statusCode == 401) {
+          console.log('没有登录')
+          app.noUser()
+          return
+        }else{
+          if (id == 1) {
+            wx.navigateTo({
+              url: "/pages/clockIn/clockIn",
+            })
+          } else if (id == 2) {
+            wx.navigateTo({
+              url: "/pages/clockInHistory/clockInHistory",
+            })
+          }
+        }
+        
       }
     })
-  },
 
-
-  gotoUserInfo: function(){
-    let that = this
-    if (wx.getStorageSync('session_id')){
-      wx.navigateTo({
-        url: "/pages/userinfo/userinfo",
-      })
-    }else{
-      app.noUser()
-    }
+    
     
   },
-  warrant: function(){
-    let that = this
-    if(that.data.uesrname == '点击授权登录'){
-      app.noUser()
-    }else{
-      return false
-    }
-  },
-  
-  /* gotoClockIn: function(){
-    wx.navigateTo({
-      url: "/pages/clockIn/clockIn",
-    })
-  }, */
-  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -80,13 +72,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let that = this
-    
-    if (wx.getStorageSync('session_id')) {
-      that.getUserContent()
-    } else {
 
-    }
   },
 
   /**

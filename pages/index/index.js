@@ -68,10 +68,11 @@ Page({
       wx.showToast({ title: '加载中', icon: 'loading', duration: 10000 })
       that.getData()
     }else{
+      that.getData()
       that.setData({
-        isHide: true,
+        isHide: false,
       });
-      wx.hideTabBar()
+      
     }
     
     
@@ -87,10 +88,10 @@ Page({
       wx.setStorageSync('user', e.detail.userInfo.nickName)
       wx.setStorageSync('avatar', e.detail.userInfo.avatarUrl)
       //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
-      that.setData({
-        isHide: false
-      });
-      wx.showTabBar()
+      
+      console.log('同意授权')
+      
+      
 
       //点击授权同时登录
       wx.getSetting({
@@ -130,11 +131,7 @@ Page({
             
           } else {
             // 用户没有授权
-            // 改变 isHide 的值，显示授权页面
-            that.setData({
-              isHide: true
-
-            });
+            console.log('没有授权')
           }
         }
       });
@@ -157,8 +154,9 @@ Page({
   },
   getData:function(){
     let that = this
+    //console.log('123')
     wx.request({
-      url: url + 'theme/search?session_id=' + wx.getStorageSync('session_id'),
+      url: url + 'theme/search',  //?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
       data: { paging: false },
       header: {
@@ -177,16 +175,11 @@ Page({
   gotoPage: function (event) {
     let number = event.currentTarget.id;//1或者2得到点击了按钮1或者按钮2 
     //console.log(number)
-    if (wx.getStorageSync('user')) {
-      wx.navigateTo({
-        url: "/pages/gaugelist/gaugelist?number=" + number,
-        //url: '/pages/mime/mine'
-      })
-    } else {
-      wx.switchTab({
-        url: '/pages/mime/mine'
-      })
-    }
+    
+    wx.navigateTo({
+      url: "/pages/gaugelist/gaugelist?number=" + number,
+    })
+    
     
   },
   

@@ -5,7 +5,7 @@
     <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">已评量表</view>
   </view>
 
-  <view class = "{{currentTab == 0 ? 'show':'hidden'}}" >
+  <view style="padding-top: 90rpx;" class = "{{currentTab == 0 ? 'show':'hidden'}}" >
     <scroll-view scroll-y="true" style="height: 100%;">
       <view class="scroll-y" style="min-height: 101%;">
         <view class='item_content' wx:for-items="{{scrolls}}" wx:key="name">
@@ -32,7 +32,7 @@
   </view>
 
 
-  <view class = "{{currentTab == 1 ? 'show':'hidden'}}" >
+  <view style="padding-top: 90rpx;" class = "{{currentTab == 1 ? 'show':'hidden'}}" >
     <view wx:if='{{havePastList}}'>
       <scroll-view scroll-y="true" style="height: 100%;">
         <view class="scroll-y" style="min-height: 101%;">

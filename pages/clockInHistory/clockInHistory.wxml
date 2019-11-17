@@ -1,6 +1,6 @@
 <view>
   <view></view>
-  <view class='item' wx:for-items="{{history_list}}" wx:key="name">
+  <view data-id='{{item.record_id}}' data-summary='{{item.summary}}' class='item' wx:for-items="{{history_list}}" wx:key="name" bindtap="gotoItem">
     <view class="summary">
       {{item.summary}}
     </view>

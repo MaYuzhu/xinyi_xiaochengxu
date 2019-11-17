@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view wx:if="{{isHide}}">
+<view hidden='{{true}}'>
     <view wx:if="{{canIUse}}" >
         <view class='header'>
             心艺教育
@@ -19,7 +19,7 @@
 </view>
 
 
-<view wx:else class="container bg">
+<view class="container bg">
   <view class='bg_img_view'>
     <image src="../../images/bg.png" class="bg_image" mode="scaleToFill"></image>
     

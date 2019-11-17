@@ -6,7 +6,7 @@ Page({
   data: {
     showModalStatus: false,//左侧边栏
     xuanxiang:[
-      '从来没有','有时出现，但不是每周一次','至少每周一次'
+      //'从来没有','有时出现，但不是每周一次','至少每周一次'
     ],
     title:'--',
     tihao_index:[],
@@ -307,9 +307,9 @@ Page({
             content: '时间到，请点击确定提交结果',
             showCancel: false,         //是否显示取消按钮
             cancelText: "",             //默认是“取消”
-            cancelColor: 'skyblue',   //取消文字的颜色
+            cancelColor: '',         //取消文字的颜色
             confirmText: "确定",         //默认是“确定”
-            confirmColor: 'skyblue',  //确定文字的颜色
+            confirmColor: '#999999',  //确定文字的颜色
             success: function (res) {
 
               if (res.confirm) {//这里是点击了确定以后
@@ -355,10 +355,16 @@ Page({
   commit_over: function(){
     let that = this
     let num_not = this.data.tihao_index.length - this.data.arr_past.length
+    let content_text
+    if (num_not==0){
+      content_text = '确定提交吗？'
+    }else{
+      content_text = '还有' + num_not + '个问题没有回答，确定提交？'
+    }
     wx.showModal({
 
       title: '',
-      content: '还有' + num_not +'个问题没有回答，确定提交？',
+      content: content_text,
       showCancel: true,//是否显示取消按钮
       cancelText: "取消",//默认是“取消”
       cancelColor: '#aaa',//取消文字的颜色

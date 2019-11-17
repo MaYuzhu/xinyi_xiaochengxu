@@ -46,13 +46,17 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+    that.setData({
+      number: options.number
+    })
+    /* 
     //console.log("传递"+options.number)
     that.setData({
       number: options.number
     })
     //量表列表
     wx.request({
-      url: url + 'scale/search?session_id=' + wx.getStorageSync('session_id'), //+ '&theme_id=' + that.number,
+      url: url + 'scale/search', //?session_id=' + wx.getStorageSync('session_id'), //+ '&theme_id=' + that.number,
       method: "POST",
       data: { theme_id: options.number},
       header: {
@@ -64,13 +68,18 @@ Page({
           scrolls: res.data.results
         })
       }
-    })
-    //已测过
+    }) */
+    
+    
+  },
+  ////已测过
+  getPastList: function(){
+    let that = this
     wx.request({
-      url: url + 'record/search?session_id=' + wx.getStorageSync('session_id'), 
+      url: url + 'record/search?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
-      data:{
-        theme_id: options.number,
+      data: {
+        theme_id: that.data.number,
         with_scale: true,
       },
       header: {
@@ -78,31 +87,43 @@ Page({
       },
       success: (res) => {
         //console.log(res)
-        if (res.data.results.length>0){
+        if (res.statusCode==401){
+          console.log('没有登录')
+          app.noUser()
+          return
+        }
+        if (res.data.results.length > 0) {
           that.setData({
             pastList: res.data.results,
             havePastList: true,
           })
         }
-        
+
+      },
+      fail: function () {
+        console.log('This is fail function')
       }
     })
   },
 
   gotoPage: function (event) {
-    const number = event.currentTarget.id  //1或者2得到点击了按钮1或者按钮2 
-    let title = event.currentTarget.dataset.title
-    wx.navigateTo({
-      url: "/pages/subjectbefore/subjectbefore?number=" + number + "&title=" + title,
-      //url: '/pages/mime/mine'
-    })
+    if (wx.getStorageSync('session_id')){
+      const number = event.currentTarget.id  //1或者2得到点击了按钮1或者按钮2 
+      let title = event.currentTarget.dataset.title
+      wx.navigateTo({
+        url: "/pages/subjectbefore/subjectbefore?number=" + number + "&title=" + title,
+      })
+    }else{
+      app.noUser()
+    }
+    
   },
   gotoPagePast: function(event){
     const record_id = event.currentTarget.id  //1或者2得到点击了按钮1或者按钮2 
     let title = event.currentTarget.dataset.title
     wx.navigateTo({
       url: "/pages/pastItem/pastItem?record_id=" + record_id + "&title=" + title,
-      //url: '/pages/mime/mine'
+      
     })
   },
   /**
@@ -116,7 +137,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this
+    //console.log("传递"+options.number)
+    that.setData({
+      currentTab: 0,
+    })
+    
+    //量表列表
+    wx.request({
+      url: url + 'scale/search', //?session_id=' + wx.getStorageSync('session_id'), //+ '&theme_id=' + that.number,
+      method: "POST",
+      data: { theme_id: that.data.number },
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        //console.log(res)
+        that.setData({
+          scrolls: res.data.results
+        })
+      }
+    })
+    
   },
 
   /**
@@ -141,6 +183,12 @@ Page({
       that.setData({
         currentTab: e.target.dataset.current,
       })
+    }
+    if (e.target.dataset.current==0){
+      //console.log(123)
+    }else{
+      //console.log(456)
+      that.getPastList()
     }
   },
 

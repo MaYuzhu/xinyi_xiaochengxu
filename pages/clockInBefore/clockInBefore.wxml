@@ -1,0 +1,20 @@
+<view class="container bg">
+  <view class='bg_img_view'>
+    <image src="../../images/bg.png" class="bg_image" mode="scaleToFill"></image>
+  </view>
+  
+  
+    
+  <view class='wrap'>
+    <view class='item_content' wx:for-items="{{scrolls}}" wx:key="name">
+      <view class="item" bindtap="gotoPage" id='{{item.id}}'>
+        <view class='item_child1'>{{item.title}}</view>
+      </view>
+      
+    </view>
+  </view>
+    
+  
+  
+  
+</view>

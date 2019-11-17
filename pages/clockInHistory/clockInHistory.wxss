@@ -11,6 +11,9 @@
 .summary{
   color:#666;
   font-size: 34rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
 }
 .update_time{
   color:#8a8a8a;

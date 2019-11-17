@@ -42,6 +42,47 @@ Page({
     })
   },
 
+  blurPhone: function(e){
+    this.setData({
+      phone: e.detail.value
+    })
+    this.setUser()
+  },
+  blurEmail: function (e) {
+    this.setData({
+      email: e.detail.value
+    })
+    this.setUser()
+  },
+  blurName: function (e) {
+    this.setData({
+      fullname: e.detail.value
+    })
+    this.setUser()
+  },
+
+  //设置用户头像与昵称
+  setUser: function () {
+    let that = this
+    wx.request({
+      url: url + 'member/save?session_id=' + wx.getStorageSync('session_id'),
+      method: "POST",
+      data: {
+        full_name: that.data.fullname,
+        phone: that.data.phone,
+        nickname: that.data.uesrname,
+        portrait: wx.getStorageSync('avatar'),
+        email: that.data.email,
+        user_info_init: true,
+      },
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        console.log(res)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
