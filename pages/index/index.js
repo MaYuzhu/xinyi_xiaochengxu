@@ -60,21 +60,8 @@ Page({
         url: '/pages/mime/mine'
       })
     } */
-    
-    if (wx.getStorageSync('session_id')) {
-      that.setData({
-        isHide: false,
-      })
-      wx.showToast({ title: '加载中', icon: 'loading', duration: 10000 })
-      that.getData()
-    }else{
-      that.getData()
-      that.setData({
-        isHide: false,
-      });
-      
-    }
-    
+    wx.showToast({ title: '加载中', icon: 'loading'})
+    that.getData() 
     
   },
   bindGetUserInfo: function (e) {

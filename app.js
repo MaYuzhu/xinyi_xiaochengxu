@@ -36,8 +36,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    url:"http://wechat.sount.net/"
-    //url:"https://miniprogram.anlanxinyi.com/"
+    //url:"http://wechat.sount.net/"
+    url:"https://miniprogram.anlanxinyi.com/"
   },
   noUser: function (e) {
     let that = this

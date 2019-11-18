@@ -62,7 +62,7 @@
     <view wx:else class='no_content'>
       <!-- <radio disabled='{{false}}' >aaaaaaaaaa</radio>
       <radio disabled='{{true}}' checked='true'>aaaaaaaaaa</radio> -->
-      <image src='../../images/页面空.png' style='width:100rpx;height:100rpx;margin:0 auto;display:block;' mode="scaleToFill"></image>
+      <image src='../../images/yemiankong.png' style='width:100rpx;height:100rpx;margin:0 auto;display:block;' mode="scaleToFill"></image>
       <view style='text-align: center;'>空空如也</view>
       <view style='text-align: center;font-size:26rpx;color:#a0a0a0'>暂时没有相关数据</view>
     </view>

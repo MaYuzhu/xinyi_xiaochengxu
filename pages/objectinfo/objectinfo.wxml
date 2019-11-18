@@ -2,7 +2,7 @@
 <view class='page'>
   <view>
     <view style='width:60rpx;height:60rpx;background:#fbfcdc;display: flex;justify-content: center;align-items: center;position:absolute;z-index:50;'>
-        <image  src="../../images/喇叭.png" style='width:30rpx;height:30rpx;' mode="scaleToFill"></image>
+        <image  src="../../images/laba.png" style='width:30rpx;height:30rpx;' mode="scaleToFill"></image>
     </view>
     <scroll-view class="container">
         <view class="scrolltxt">

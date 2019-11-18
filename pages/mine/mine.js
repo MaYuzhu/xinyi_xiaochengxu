@@ -30,13 +30,17 @@ Page({
       },
       success: (res) => {
         console.log(res)
-        wx.hideToast()
-        that.setData({
-          uesrname: wx.getStorageSync('user'),
-          avatar: wx.getStorageSync('avatar'),
-          isAvatar: true
-        })
-        //that.setUser()
+        if (res.statusCode == 401) {
+          return
+        } else {
+          wx.hideToast()
+          that.setData({
+            uesrname: wx.getStorageSync('user'),
+            avatar: wx.getStorageSync('avatar'),
+            isAvatar: true
+          })
+        }
+        
       }
     })
   },
@@ -44,13 +48,24 @@ Page({
 
   gotoUserInfo: function(){
     let that = this
-    if (wx.getStorageSync('session_id')){
-      wx.navigateTo({
-        url: "/pages/userinfo/userinfo",
-      })
-    }else{
-      app.noUser()
-    }
+    wx.request({
+      url: url + 'member/get?session_id=' + wx.getStorageSync('session_id'),
+      method: "POST",
+      data: {},
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        if (res.statusCode == 401) {
+          app.noUser()
+        } else {
+          wx.navigateTo({
+            url: "/pages/userinfo/userinfo",
+          })
+        }
+      }
+    })
+    
     
   },
   warrant: function(){
@@ -82,11 +97,8 @@ Page({
   onShow: function () {
     let that = this
     
-    if (wx.getStorageSync('session_id')) {
-      that.getUserContent()
-    } else {
-
-    }
+    that.getUserContent()
+    
   },
 
   /**

@@ -32,8 +32,8 @@
         "list": [
             {
               "pagePath": "pages/clockInBefore/clockInBefore",
-              "iconPath": "images/打卡记录.png",
-              "selectedIconPath": "images/打卡记录1.png",
+              "iconPath": "images/daka.png",
+              "selectedIconPath": "images/daka1.png",
               "text": "打卡"
             },
             {

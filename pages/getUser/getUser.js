@@ -22,7 +22,7 @@ Page({
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
 
-      // 获取到用户的信息了，打印到控制台上看下
+      // 获取到用户的信息了，打印到控制台上
       //console.log("用户的信息如下：");
       //console.log(e.detail.userInfo);
       wx.setStorageSync('user', e.detail.userInfo.nickName)
@@ -37,7 +37,7 @@ Page({
 
                 wx.login({
                   success: res => {
-                    console.log("用户的code:" + res.code);
+                    //console.log("用户的code:" + res.code);
 
                     wx.request({
                       method: "POST",
@@ -50,7 +50,7 @@ Page({
                         "Content-Type": "application/json;charset=UTF-8"
                       },
                       success: (res) => {
-                        console.log(res)
+                        //console.log(res)
                         wx.setStorageSync('session_id', res.data.session_id)
                         
                         // const pages = getCurrentPages()

@@ -2,7 +2,7 @@
 <view class='bg'>
   <view class='top'>
     <view class='top_left'>
-      <image class='top_img'  bindtap="powerDrawer" data-statu="open" src="../../images/更多.png" style='width:50rpx;height:50rpx;' mode="scaleToFill"></image>
+      <image class='top_img'  bindtap="powerDrawer" data-statu="open" src="../../images/gengduo.png" style='width:50rpx;height:50rpx;' mode="scaleToFill"></image>
       <text style='color:#515151'>{{page.number}}/{{total_size}}</text>
     </view>
     <view hidden='{{time_show}}'>{{time_m}}分{{time_s}}秒</view>

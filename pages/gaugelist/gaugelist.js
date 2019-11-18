@@ -88,7 +88,7 @@ Page({
       success: (res) => {
         //console.log(res)
         if (res.statusCode==401){
-          console.log('没有登录')
+          //console.log('没有登录')
           app.noUser()
           return
         }
@@ -107,15 +107,27 @@ Page({
   },
 
   gotoPage: function (event) {
-    if (wx.getStorageSync('session_id')){
-      const number = event.currentTarget.id  //1或者2得到点击了按钮1或者按钮2 
-      let title = event.currentTarget.dataset.title
-      wx.navigateTo({
-        url: "/pages/subjectbefore/subjectbefore?number=" + number + "&title=" + title,
-      })
-    }else{
-      app.noUser()
-    }
+    wx.request({
+      url: url + 'person-role/list?session_id=' + wx.getStorageSync('session_id'),
+      method: "POST",
+      data: {},
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        //console.log(res)
+        if (res.statusCode == 401){
+          app.noUser()
+        }else{
+          const number = event.currentTarget.id  //1或者2得到点击了按钮1或者按钮2 
+          let title = event.currentTarget.dataset.title
+          wx.navigateTo({
+            url: "/pages/subjectbefore/subjectbefore?number=" + number + "&title=" + title,
+          })
+        }
+      }
+    })
+    
     
   },
   gotoPagePast: function(event){

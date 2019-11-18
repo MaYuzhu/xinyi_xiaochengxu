@@ -1,7 +1,7 @@
 <!--pages/mine/mine.wxml-->
 <view class='bg'>
   <view class='top'>
-    <image hidden='{{isAvatar}}' src="../../images/头像-实.png" style='width:130rpx;height:130rpx;' mode="scaleToFill"></image>
+    <image hidden='{{isAvatar}}' src="../../images/touxiang.png" style='width:130rpx;height:130rpx;' mode="scaleToFill"></image>
     <image hidden='{{!isAvatar}}' src="{{avatar}}" style='width:130rpx;height:130rpx;border-radius:65rpx;margin-left:30rpx;' mode="scaleToFill"></image>
     <view style='font-size:36rpx;color:#666;margin-left:20rpx;' bindtap="warrant">{{uesrname}}</view>
   </view>
@@ -9,7 +9,7 @@
     <view class='item'>
       <view>
         <view style='width:100rpx;height:100rpx;margin:0 auto'>
-          <image src="../../images/编辑3.png" style='width:100rpx;height:100rpx;' mode="scaleToFill"></image>
+          <image src="../../images/bianji3.png" style='width:100rpx;height:100rpx;' mode="scaleToFill"></image>
         </view>
         
         <text class='num'>3</text>
@@ -19,7 +19,7 @@
     <view class='item'>
       <view>
         <view style='width:100rpx;height:100rpx;margin:0 auto'>
-          <image src="../../images/文件.png" style='width:100rpx;height:100rpx;' mode="scaleToFill"></image>
+          <image src="../../images/wenjian.png" style='width:100rpx;height:100rpx;' mode="scaleToFill"></image>
         </view> 
         
         <text class='num'>33</text>
@@ -29,7 +29,7 @@
     <view class='item'>
       <view>
         <view style='width:70rpx;height:70rpx;padding:15rpx;margin:0 auto'>
-          <image src="../../images/定时闹钟.png" style='width:80rpx;height:80rpx;' mode="scaleToFill"></image>
+          <image src="../../images/naozhong.png" style='width:80rpx;height:80rpx;' mode="scaleToFill"></image>
         </view>
         <text class='num'>1</text>
       </view>
