@@ -10,7 +10,7 @@ Page({
     selectedSrc: '../../images/full-star.png',
     halfSrc: '../../images/half-star.png',
     score: 0,
-    scores: [0],
+    scores: [-1],
     option_id_arr:[],
     //details:[],
     isHave:'',
@@ -94,10 +94,13 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
+        //console.log(res)
         if (res.statusCode == 401) {
           console.log('没有登录')
           app.noUser()
+          return
+        }
+        if (res.data.details.length<1) {
           return
         }
         let have = res.data.details.length
@@ -157,7 +160,7 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
+        //console.log(res)
         let show_star = []
         let show_details_submit = []
         for (let i = 0; i < res.data.details.length;i++){
@@ -182,7 +185,7 @@ Page({
   submit_evaluate: function () {
     let that = this
     
-    console.log(that.data.details_submit)
+    //console.log(that.data.details_submit)
     //console.log(that.data.summary)
 
     wx.request({
@@ -241,18 +244,28 @@ Page({
         score: score
     })
     //console.log(option_id)
-    let is_scores
-    if (this.data.scores.indexOf(0) == -1 && this.data.scores.length == this.data.evaluate_contant.length) {
+    let is_scores = false
+    let have_empty = []
+    for (let i = 0; i < this.data.scores.length;i++){
+      if (this.data.scores[i]!=undefined){
+        have_empty.push(this.data.scores[i])
+      }
+    }
+    
+    if (have_empty.length == this.data.evaluate_contant.length && this.data.scores.indexOf(0) == -1 && this.data.scores.length == this.data.evaluate_contant.length) {
       is_scores = true
+    
     }
     if (this.data.summary != '' && is_scores) {
       this.setData({
         is_show_button: true
       })
+      
     } else {
       this.setData({
         is_show_button: false
       })
+      
     }
   },
 
@@ -274,7 +287,13 @@ Page({
     })
     
     let is_scores 
-    if (this.data.scores.indexOf(0) == -1 && this.data.scores.length == this.data.evaluate_contant.length){
+    let have_empty = []
+    for (let i = 0; i < this.data.scores.length; i++) {
+      if (this.data.scores[i] != undefined) {
+        have_empty.push(this.data.scores[i])
+      }
+    }
+    if (have_empty.length == this.data.evaluate_contant.length && this.data.scores.indexOf(0) == -1 && this.data.scores.length == this.data.evaluate_contant.length){
       is_scores = true
     }
     if (this.data.summary != '' && is_scores){
@@ -294,6 +313,9 @@ Page({
     wx.navigateTo({
       url: "/pages/clockInHistory/clockInHistory",
     })
-  }
+  },
+
+  
+  
 
 })

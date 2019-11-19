@@ -37,9 +37,9 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
+        //console.log(res)
         if (res.statusCode == 401) {
-          console.log('没有登录')
+          //console.log('没有登录')
           app.noUser()
           return
         }else{

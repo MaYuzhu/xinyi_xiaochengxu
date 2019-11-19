@@ -1,7 +1,9 @@
 {
     "pages": [
       
+      
       "pages/indexBefore/indexBefore",
+        "pages/memberGroup/memberGroup",
         "pages/clockInBefore/clockInBefore",
         "pages/clockInItemDay/clockInItemDay",
         "pages/index/index",
@@ -15,6 +17,7 @@
         "pages/objectinfo/objectinfo",
         "pages/mine/mine",
         "pages/gaugelist/gaugelist",
+      
         "pages/xieyi/xieyi",
         "pages/mime/mine",
         "pages/logs/logs"

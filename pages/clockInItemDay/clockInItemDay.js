@@ -1,4 +1,5 @@
-// pages/clockInItemDay/clockInItemDay.js
+var app = getApp()
+var url = app.globalData.url
 Page({
 
   /**
@@ -31,7 +32,7 @@ Page({
         my_level: 7
       },
     ],
-    text:'affhakjfhakljfhalkjfhakjfhakuyfakhaffhakjfhakljfhalkjfhakjfhakuyfakhaffhakjfhakljfhalkjfhakjfhakuyfakhaffhakjfhakljfhalkjfhakjfhakuyfakh'
+    text:''
   },
 
   /**
@@ -40,9 +41,24 @@ Page({
   onLoad: function (options) {
     let that = this
     
-    that.setData({
-      text: options.summary
+    wx.request({
+      url: url + 'track-record/get?session_id=' + wx.getStorageSync('session_id'),
+      method: "POST",
+      data: { 
+        record_id: options.id 
+      },
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        //console.log(res)
+        that.setData({
+          text: res.data.summary,
+          arr_items:res.data.details
+        })
+      }
     })
+
   },
 
   /**

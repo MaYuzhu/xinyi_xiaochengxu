@@ -29,7 +29,7 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
+        //console.log(res)
         if (res.statusCode == 401) {
           return
         } else {
@@ -75,6 +75,27 @@ Page({
     }else{
       return false
     }
+  },
+  //分组
+  gotoGroup: function(){
+    let that = this
+    wx.request({
+      url: url + 'member-group/get?session_id=' + wx.getStorageSync('session_id'),
+      method: "POST",
+      data: {},
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        if (res.statusCode == 401) {
+          app.noUser()
+        } else {
+          wx.navigateTo({
+            url: "/pages/memberGroup/memberGroup",
+          })
+        }
+      }
+    })
   },
   
   /* gotoClockIn: function(){

@@ -24,7 +24,7 @@
         </view>
       </view>
     </scroll-view>
-    <view>
+    <view style='margin-top:24rpx;'>
       <view style='width:80%;height: 1rpx;background-color:#ccc;margin:0 auto;'></view>
       <view style='width:130rpx;text-align:center;font-size:20rpx;color:#666;background:#f7f7f9;margin:0 auto; transform: translateY(-56%)'> 到达底线了~</view>
       
@@ -52,7 +52,7 @@
           </view>
         </view>
       </scroll-view>
-      <view>
+      <view style='margin-top:24rpx;'>
         <view style='width:80%;height: 1rpx;background-color:#ccc;margin:0 auto;'></view>
         <view style='width:130rpx;text-align:center;font-size:20rpx;color:#666;background:#f7f7f9;margin:0 auto; transform: translateY(-56%)'> 到达底线了~</view>
         

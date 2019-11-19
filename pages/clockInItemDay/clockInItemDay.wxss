@@ -6,12 +6,20 @@
   margin: 30rpx;
 }
 .title{
-  padding: 30rpx;
-  
+  padding: 30rpx 0 0 40rpx;
+  color: #666666;
 }
 
 .item{
   display: flex;
+  align-items: center;
+}
+.option_title{
+  width: 240rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #999999;
+  font-size: 30rpx;
 }
 .xing{
   display: flex;
@@ -26,5 +34,6 @@
   border: 2rpx solid #e0e0e0;
   border-radius:16rpx; 
   word-break:break-all;
-  color: #666666;
+  color: #999999;
+  font-size: 30rpx;
 }

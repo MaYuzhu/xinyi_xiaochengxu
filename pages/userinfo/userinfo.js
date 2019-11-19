@@ -28,7 +28,7 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
+        //console.log(res)
         wx.hideToast()
         that.setData({
           uesrname: wx.getStorageSync('user'),
@@ -79,7 +79,7 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
+        //console.log(res)
       }
     })
   },

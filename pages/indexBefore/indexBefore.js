@@ -33,7 +33,7 @@ Page({
   gotoPage: function (event){
     let id = event.currentTarget.id;
     if(id == 1){
-      console.log(id)
+      //console.log(id)
       wx.switchTab({
         url: "/pages/clockInBefore/clockInBefore",
       })

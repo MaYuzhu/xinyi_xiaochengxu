@@ -49,6 +49,12 @@
         <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
       </view>
     </view> -->
+    <view bindtap="gotoGroup">  <!-- bindtap="gotoGroup" -->
+      <view>我的分组</view>
+      <view>
+        <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
+      </view>
+    </view>
     <view>
       <view>评估历史</view>
       <view>

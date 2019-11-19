@@ -7,8 +7,8 @@ Page({
    */
   data: {
     history_list:[
-      { summary: '111111', update_time:'2019-01-55 22:55:42'},
-      { summary: '555555', update_time: '2019-10-55 22:55:42'}
+      // { summary: '111111', update_time:'2019-01-55 22:55:42'},
+      // { summary: '555555', update_time: '2019-10-55 22:55:42'}
     ]
   },
 
@@ -19,17 +19,29 @@ Page({
     let that = this
 
     wx.request({
-      url: url + 'track/search?session_id=' + wx.getStorageSync('session_id'),
+      url: url + 'track-record/list?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
       data: { paging: false },
       header: {
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
-        that.setData({
-          history_list: res.data.results
-        })
+        //console.log(res)
+        if (res.data.results.length < 1 ){
+          wx.showToast({
+            title: '暂无数据',
+            icon: 'none',
+            duration: 2000
+          })
+          setTimeout(()=>{
+            wx.navigateBack()
+          },2000)
+        }else{
+          that.setData({
+            history_list: res.data.results
+          })
+        }
+        
       }
     })
   },
@@ -37,9 +49,9 @@ Page({
   gotoItem: function(e){
     let id = e.currentTarget.dataset.id
     let summary = e.currentTarget.dataset.summary
-    console.log(id)
+    //console.log(id)
     wx.navigateTo({
-      url: "/pages/clockInItemDay/clockInItemDay?summary=" + summary,
+      url: "/pages/clockInItemDay/clockInItemDay?id=" + id,
     })
   },
 

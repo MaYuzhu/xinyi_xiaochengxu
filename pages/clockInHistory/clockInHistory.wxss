@@ -1,3 +1,10 @@
+page{
+  background: #efefef;
+}
+.wrap{
+  padding-top: 10rpx;
+}
+
 .item{
   position: relative;
   width: 90%;
