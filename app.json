@@ -21,7 +21,7 @@
         "pages/objectinfo/objectinfo",
         "pages/mine/mine",
         "pages/gaugelist/gaugelist",
-      
+        "pages/kefu/kefu",
         "pages/xieyi/xieyi",
         "pages/instructions/instructions",
         "pages/mime/mine",
@@ -55,6 +55,12 @@
                 "iconPath": "images/ping1.png",
                 "selectedIconPath": "images/ping.png",
                 "text": "评估"
+            },
+            {
+              "pagePath": "pages/kefu/kefu",
+              "iconPath": "images/zi1.png",
+              "selectedIconPath": "images/zi.png",
+              "text": "客服"
             },
             {
                 "pagePath": "pages/mine/mine",

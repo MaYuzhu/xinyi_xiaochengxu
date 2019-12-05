@@ -19,13 +19,13 @@
         <view class='content2'>
           <view style='color:#6495ED;'>2. 评估试题</view>
 
-          <view wx:for-items="{{questions}}" wx:key="index" style='border-bottom: 2rpx solid #aaa;'>
-            <view data-id='{{question_id}}' style='border-bottom: 2rpx solid #ddd;line-height:70rpx;font-size:34rpx;color:#999'>单选题：{{item.content}}       
+          <view wx:for="{{questions}}"  wx:key="index" style='border-bottom: 2rpx solid #aaa;'>
+            <view data-id='{{question_id}}' style='border-bottom: 2rpx solid #ddd;line-height:70rpx;font-size:34rpx;color:#999'>单选题：{{item.question.content}}       
             </view>
             <radio-group class="radio-group" bindchange="radioChange">
-              <label style='display:block;height:70rpx;color:#666;font-size:32rpx;' class='line_botttom' wx:for-items="{{item.options}}" wx:key='index'>
-                  <text>{{item.content}}</text>
-                  <radio disabled='{{true}}' class="{{item.selected?null:'radio'}}" style='float:right;' checked="{{item.selected}}">
+              <label style='display:block;min-height:70rpx;color:#666;font-size:32rpx;' class='line_botttom' wx:for="{{item.question.options}}" wx:for-item="i" wx:key='index'>
+                  <text>{{i.content}}</text>
+                  <radio disabled='{{true}}' class="{{item.my_option.option_id==i.option_id?'null':'radio'}}" style='float:right;' checked="{{item.my_option.option_id==i.option_id}}">
                   </radio>
               </label>
               

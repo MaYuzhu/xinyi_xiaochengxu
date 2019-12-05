@@ -42,7 +42,7 @@ Page({
 
                     wx.request({
                       method: "POST",
-                      url: url + 'account/wechat/login?code=' + res.code,
+                      url: url + 'oauth/wechat/login?code=' + res.code,
                       //url: url + 'account/wechat/login?code=1',
                       /* data: {
                         code: res.code

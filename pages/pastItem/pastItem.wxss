@@ -105,7 +105,9 @@ radio .wx-radio-input.wx-radio-input-checked::before{
 }
 .radio{
   display: none;
+  background: blue；
 }
+
 .button{
     height: 80rpx;
     line-height: 80rpx;

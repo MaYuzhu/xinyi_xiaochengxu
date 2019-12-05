@@ -37,12 +37,12 @@ Page({
         "Content-Type": "application/json;charset=UTF-8"
       },
       success: (res) => {
-        console.log(res)
+        //console.log(res)
         wx.hideToast()
         that.setData({
-          theme_description: res.data.theme.description,
+          theme_description: res.data.scale.title,
           role_title: res.data.role.title,
-          questions: res.data.questions,
+          questions: res.data.details,
           total_score: res.data.total_score,
           answer_time: res.data.scale.answer_time
         })

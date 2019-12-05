@@ -387,7 +387,7 @@ Page({
               "Content-Type": "application/json;charset=UTF-8"
             },
             success: (res) => {
-              console.log(res)
+              //console.log(res)
               wx.showToast({
                 title: '提交成功',
                 icon: 'success',
