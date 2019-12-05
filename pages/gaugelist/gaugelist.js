@@ -11,32 +11,32 @@ Page({
     number: 0 ,
     scrolls: [
 
-      {
-        name: '儿童行为情绪量表',
-        tag: 15,
-      },
-      {
-        name: '中国儿童注意力量表',
-        tag: 15,
-      },
-      {
-        name: '感觉量表',
-        tag: 20,
-      },
-      {
-        name: '焦虑量表',
-        tag: 10,
-      },
+      // {
+      //   name: '儿童行为情绪量表',
+      //   tag: 15,
+      // },
+      // {
+      //   name: '中国儿童注意力量表',
+      //   tag: 15,
+      // },
+      // {
+      //   name: '感觉量表',
+      //   tag: 20,
+      // },
+      // {
+      //   name: '焦虑量表',
+      //   tag: 10,
+      // },
     ],
     pastList: [
-      {
-        title: '量表111',
-        tag: 15,
-      },
-      {
-        title: '量表222',
-        tag: 15,
-      },
+      // {
+      //   title: '量表111',
+      //   tag: 15,
+      // },
+      // {
+      //   title: '量表222',
+      //   tag: 15,
+      // },
     ],
     havePastList:false,
   },
@@ -81,6 +81,7 @@ Page({
       data: {
         theme_id: that.data.number,
         with_scale: true,
+        paging: false
       },
       header: {
         "Content-Type": "application/json;charset=UTF-8"
@@ -119,10 +120,11 @@ Page({
         if (res.statusCode == 401){
           app.noUser()
         }else{
-          const number = event.currentTarget.id  //1或者2得到点击了按钮1或者按钮2 
+          let number = event.currentTarget.id  //1或者2得到点击了按钮1或者按钮2 
           let title = event.currentTarget.dataset.title
+          let answer_time = event.currentTarget.dataset.answer_time
           wx.navigateTo({
-            url: "/pages/subjectbefore/subjectbefore?number=" + number + "&title=" + title,
+            url: "/pages/subjectbefore/subjectbefore?number=" + number + "&title=" + title + "&answer_time=" + answer_time,
           })
         }
       }
@@ -151,15 +153,15 @@ Page({
   onShow: function () {
     let that = this
     //console.log("传递"+options.number)
-    that.setData({
+    /* that.setData({
       currentTab: 0,
-    })
+    }) */
     
     //量表列表
     wx.request({
       url: url + 'scale/search', //?session_id=' + wx.getStorageSync('session_id'), //+ '&theme_id=' + that.number,
       method: "POST",
-      data: { theme_id: that.data.number },
+      data: { theme_id: that.data.number, paging: false},
       header: {
         "Content-Type": "application/json;charset=UTF-8"
       },

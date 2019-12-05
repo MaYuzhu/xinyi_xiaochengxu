@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tongyixieyi:false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
   },
 
@@ -53,6 +54,27 @@ Page({
                         //console.log(res)
                         wx.setStorageSync('session_id', res.data.session_id)
                         
+                        //如果首次保存用户信息
+                        if (!res.data.user_info_init){
+                          //console.log(e.detail.userInfo.nickName)
+                          wx.request({
+                            url: url + 'member/save?session_id=' + wx.getStorageSync('session_id'),
+                            method: "POST",
+                            data: {
+                              nickname: e.detail.userInfo.nickName,
+                              portrait: e.detail.userInfo.avatarUrl,
+                            },
+                            header: {
+                              "Content-Type": "application/json;charset=UTF-8"
+                            },
+                            success: (res) => {
+                              //console.log(res)
+                            }
+                          })
+                        }
+                        
+
+
                         // const pages = getCurrentPages()
                         // const perpage = pages[pages.length - 1]
                         // perpage.onLoad()
@@ -93,6 +115,25 @@ Page({
     }
   },
   
+  //同意用户协议
+  checkboxChange: function(event){
+    if (event.detail.value=='1'){
+      //console.log(event.detail.value)
+      this.setData({
+        tongyixieyi: false
+      })
+    }else{
+      this.setData({
+        tongyixieyi: true
+      })
+    }
+    
+  },
+  gotoXieyi: function () {
+    wx.navigateTo({
+      url: "/pages/xieyi/xieyi",
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

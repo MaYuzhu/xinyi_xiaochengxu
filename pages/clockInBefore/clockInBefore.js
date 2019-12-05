@@ -14,8 +14,12 @@ Page({
         id: 1
       },
       {
-        title: '查看记录',
+        title: '我的打卡',
         id: 2
+      },
+      {
+        title: '打卡分析',
+        id: 3
       },
     ],
   },
@@ -50,6 +54,10 @@ Page({
           } else if (id == 2) {
             wx.navigateTo({
               url: "/pages/clockInHistory/clockInHistory",
+            })
+          } else if (id == 3){
+            wx.navigateTo({
+              url: "/pages/clockInMonth/clockInMonth",
             })
           }
         }

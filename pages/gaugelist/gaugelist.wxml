@@ -11,7 +11,7 @@
         <view class='item_content' wx:for-items="{{scrolls}}" wx:key="name">
           <view class="item">
             <view class='item_child1'>{{item.title}}</view>
-            <view class='item_child2' data-title='{{item.title}}' bindtap="gotoPage" id="{{item.scale_id}}">
+            <view class='item_child2' data-answer_time='{{item.answer_time}}' data-title='{{item.title}}' bindtap="gotoPage" id="{{item.scale_id}}">
               <view>测量时长：{{item.answer_time}}分钟</view>
               <view class='item_child2_2'>
                 <view>进入量表</view>
@@ -24,7 +24,7 @@
         </view>
       </view>
     </scroll-view>
-    <view style='margin-top:24rpx;'>
+    <view style='margin-top:34rpx;'>
       <view style='width:80%;height: 1rpx;background-color:#ccc;margin:0 auto;'></view>
       <view style='width:130rpx;text-align:center;font-size:20rpx;color:#666;background:#f7f7f9;margin:0 auto; transform: translateY(-56%)'> 到达底线了~</view>
       
@@ -52,7 +52,7 @@
           </view>
         </view>
       </scroll-view>
-      <view style='margin-top:24rpx;'>
+      <view style='margin-top:34rpx;'>
         <view style='width:80%;height: 1rpx;background-color:#ccc;margin:0 auto;'></view>
         <view style='width:130rpx;text-align:center;font-size:20rpx;color:#666;background:#f7f7f9;margin:0 auto; transform: translateY(-56%)'> 到达底线了~</view>
         

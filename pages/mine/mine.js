@@ -97,7 +97,41 @@ Page({
       }
     })
   },
-  
+  //评估历史
+  gotoGaugeHistory(){
+    let that = this
+    wx.request({
+      url: url + 'record/search?session_id=' + wx.getStorageSync('session_id'),
+      method: "POST",
+      data: {
+        //theme_id: that.data.number,
+        with_scale: true,
+        paging: false
+      },
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: (res) => {
+        if (res.statusCode == 401) {
+          app.noUser()
+        } else {
+          wx.navigateTo({
+            url: "/pages/gaugeHistory/gaugeHistory",
+          })
+        }
+      }
+    })
+  },
+  gotoXieyi: function() {
+    wx.navigateTo({
+      url: "/pages/xieyi/xieyi",
+    })
+  },
+  gotoInstructions: function() {
+    wx.navigateTo({
+      url: "/pages/instructions/instructions",
+    })
+  },
   /* gotoClockIn: function(){
     wx.navigateTo({
       url: "/pages/clockIn/clockIn",

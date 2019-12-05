@@ -15,6 +15,7 @@ page{
     border-radius:20rpx; 
     padding: 30rpx;
     box-sizing: border-box;
+    color: #666;
 }
 ::-webkit-scrollbar {
   width: 0;

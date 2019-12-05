@@ -9,6 +9,7 @@ Page({
   data: {
     uesrname: '小程序用户',
     fullname: '',
+    nickname:'',
     avatar: '',
     isAvatar: false,
     phone: '',
@@ -38,8 +39,10 @@ Page({
           email: res.data.email,
           isAvatar: true
         })
+        that.setUser()
       }
     })
+    
   },
 
   blurPhone: function(e){
@@ -61,19 +64,26 @@ Page({
     this.setUser()
   },
 
-  //设置用户头像与昵称
+  //设置用户信息
   setUser: function () {
     let that = this
+    if (!(/^1\d{10}$/.test(that.data.phone))) {
+      wx.showToast({
+        title: '请填写正确的号码',
+        icon: 'none',
+        duration: 2000
+      })
+      return false;
+    } 
     wx.request({
       url: url + 'member/save?session_id=' + wx.getStorageSync('session_id'),
       method: "POST",
       data: {
         full_name: that.data.fullname,
         phone: that.data.phone,
-        nickname: that.data.uesrname,
-        portrait: wx.getStorageSync('avatar'),
         email: that.data.email,
-        user_info_init: true,
+        nickname:that.data.uesrname,
+        portrait:that.data.avatar,
       },
       header: {
         "Content-Type": "application/json;charset=UTF-8"

@@ -15,7 +15,7 @@ Page({
     //details:[],
     isHave:'',
     scale_id:'',
-    max: 128,
+    max: 1000,
     summary: '',
     details_submit:[],
     is_show_button:false,
@@ -107,7 +107,7 @@ Page({
         let num_star = res.data.details[0].max_level
         let arr_atar = []
         let arr_op_id = []
-        for (let i = 0; i < num_star; i++) {
+        for (let i = 0; i <= num_star; i++) {
           arr_atar.push(i)
         }
         for (let j = 0; j < res.data.details.length; j++) {

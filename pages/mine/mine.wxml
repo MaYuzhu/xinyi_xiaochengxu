@@ -12,17 +12,17 @@
           <image src="../../images/bianji3.png" style='width:100rpx;height:100rpx;' mode="scaleToFill"></image>
         </view>
         
-        <text class='num'>3</text>
+        <!-- <text class='num'>3</text> -->
       </view>
       <view class='icon_text'>参与评估</view>
     </view>
-    <view class='item'>
+    <view class='item' bindtap="gotoGaugeHistory">
       <view>
         <view style='width:100rpx;height:100rpx;margin:0 auto'>
           <image src="../../images/wenjian.png" style='width:100rpx;height:100rpx;' mode="scaleToFill"></image>
         </view> 
         
-        <text class='num'>33</text>
+        <!-- <text class='num'>33</text> -->
       </view>
       <view class='icon_text'>评估历史</view>
     </view>
@@ -31,9 +31,9 @@
         <view style='width:70rpx;height:70rpx;padding:15rpx;margin:0 auto'>
           <image src="../../images/naozhong.png" style='width:80rpx;height:80rpx;' mode="scaleToFill"></image>
         </view>
-        <text class='num'>1</text>
+        <!-- <text class='num'>1</text> -->
       </view>
-      <view class='icon_text'>预约次数</view>
+      <view class='icon_text'>咨询课数</view>
     </view>
   </view>
   <view class='list'>
@@ -55,7 +55,7 @@
         <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
       </view>
     </view>
-    <view>
+    <view bindtap="gotoGaugeHistory">
       <view>评估历史</view>
       <view>
         <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
@@ -69,6 +69,18 @@
     </view>
     <view>
       <view>联系客服</view>
+      <view>
+        <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
+      </view>
+    </view>
+    <view bindtap="gotoXieyi">
+      <view>用户协议</view>
+      <view>
+        <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
+      </view>
+    </view>
+    <view bindtap="gotoInstructions">
+      <view>使用说明</view>
       <view>
         <image src="../../images/youhui.png" style='width:70rpx;height:70rpx;' mode="scaleToFill"></image>
       </view>

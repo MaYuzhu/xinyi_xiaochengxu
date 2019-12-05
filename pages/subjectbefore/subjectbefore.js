@@ -31,7 +31,7 @@ Page({
     that.setData({
       number: options.number,
       title: options.title,
-      countDownNum: 0.7,
+      countDownNum: options.answer_time,
     })
     //请求得到问题
     wx.request({

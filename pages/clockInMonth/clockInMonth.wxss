@@ -1,0 +1,19 @@
+/* pages/clockInMonth/clockInMonth.wxss */
+page{
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.containerMonth {
+  width: 100%;
+  height: 500rpx;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+#column-dom{
+  height: 100%;
+  width: 100%;
+}

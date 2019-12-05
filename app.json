@@ -1,16 +1,20 @@
 {
     "pages": [
-      
-      
-      "pages/indexBefore/indexBefore",
-        "pages/memberGroup/memberGroup",
+        "pages/home/home",
         "pages/clockInBefore/clockInBefore",
-        "pages/clockInItemDay/clockInItemDay",
         "pages/index/index",
+        "pages/indexBefore/indexBefore",
+        "pages/memberGroup/memberGroup",
+
+        "pages/clockInMonth/clockInMonth",
+
+        "pages/clockInItemDay/clockInItemDay",
         "pages/getUser/getUser",
+        
         "pages/clockIn/clockIn",
         "pages/clockInHistory/clockInHistory",
         "pages/userinfo/userinfo",
+        "pages/gaugeHistory/gaugeHistory",
         "pages/subjectbefore/subjectbefore",
         "pages/subject/subject",
         "pages/pastItem/pastItem",
@@ -19,6 +23,7 @@
         "pages/gaugelist/gaugelist",
       
         "pages/xieyi/xieyi",
+        "pages/instructions/instructions",
         "pages/mime/mine",
         "pages/logs/logs"
         
@@ -34,6 +39,12 @@
         "selectedColor": "#c2c212",
         "list": [
             {
+              "pagePath": "pages/home/home",
+              "iconPath": "images/home1.png",
+              "selectedIconPath": "images/home.png",
+              "text": "首页"
+            },
+            {
               "pagePath": "pages/clockInBefore/clockInBefore",
               "iconPath": "images/daka.png",
               "selectedIconPath": "images/daka1.png",
@@ -41,8 +52,8 @@
             },
             {
                 "pagePath": "pages/index/index",
-                "iconPath": "images/home1.png",
-                "selectedIconPath": "images/home.png",
+                "iconPath": "images/ping1.png",
+                "selectedIconPath": "images/ping.png",
                 "text": "评估"
             },
             {
